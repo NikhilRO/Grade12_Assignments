@@ -34,7 +34,7 @@ function setup() {
 }
 
 function draw() {
-  col = map(noise(xoff1), 0, 1, 75, 255);
+  col = map(noise(xoff1), 0, 1, 25, 255);
   background(175, col);
   movingCircle();
   circle.display();
