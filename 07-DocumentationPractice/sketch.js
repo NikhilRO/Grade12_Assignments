@@ -185,11 +185,9 @@ function divide(first, second) {
 function maximum(first, second) {
   if (first > second) {
     return first;
-  } else if (first < second) {
+  } else if (first <= second) {
     return second;
-  } else {
-    return "equal";
-  }
+  } 
 }
 
 /** This function takes in two float values and returns the smaller of those two values
@@ -201,11 +199,9 @@ function maximum(first, second) {
 function minimum(first, second) {
   if (first < second) {
     return first;
-  } else if (first > second) {
+  } else if (first >= second) {
     return second;
-  } else {
-    return "equal";
-  }
+  } 
 }
 
 /** This function takes in an array and reverses the order of the array
