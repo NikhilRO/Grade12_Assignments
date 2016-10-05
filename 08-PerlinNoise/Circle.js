@@ -1,18 +1,33 @@
-function Circle(x, y, start, radius, clockwise, change) {
-  this.x = x; //why do we need this ? we could use x directly where it is needed
+/**
+ * Represents a dot/point/circle.
+ * @class
+ * @constructor
+ * @param {number}  x -        The initial x position of the point
+ * @param {number}  y -        The initial y position of the point
+ * @param {number}  start      The initial angle at which the point starts 
+ * @param {number}  radius     The initial radius of the circle of which the point forms a part
+ * @param {boolean} clockwise  The initial direction of motion the point
+ */
+function Circle(x, y, start, radius, clockwise) {
+  this.x = x;
   this.y = y;
   this.start = start;
   this.radius = radius;
-  this.change = change;
   this.clockwise = clockwise;
 
+  /**
+   * Displays the point on the screen
+   */
   this.display = function() {
     noFill();
-    stroke(255, 255, 0);
+    stroke(255, 255, 0, 100);
     strokeWeight(10);
     arc(this.x, this.y, 2 * this.radius, 2 * this.radius, this.start, this.start + radians(1));
   }
 
+  /**
+   * Moves the point in clockwise or anti-clockwise direction
+   */
   this.move = function() {
     if (this.clockwise) {
       this.start = this.start + radians(1);
@@ -21,31 +36,18 @@ function Circle(x, y, start, radius, clockwise, change) {
     }
   }
 
+  /**
+   * This funtion controls the direction of motion of point
+   */
   this.rotation = function() {
     this.clockwise = !this.clockwise;
   }
 
+  /**
+   * Updates the radius of the circle that the dot is a part of 
+   * @param {number} x  It is used to adjust the radius in accordance to the outside universe
+   */
   this.update = function(x) {
     this.radius = x;
   }
 }
-
-
-
-/*function Jitter() {
-  this.x = random(width);
-  this.y = random(height);
-  this.diameter = random(10, 30);
-  this.speed = 1;
-
-  this.move = function() {
-    this.x += random(-this.speed, this.speed);
-    this.y += random(-this.speed, this.speed);
-  };
-
-  this.display = function() {
-    ellipse(this.x, this.y, this.diameter, this.diameter);
-  }
-};
-
-*/
