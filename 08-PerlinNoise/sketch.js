@@ -10,6 +10,7 @@ function setup() {
   clockwise = true;
   xoff = 0;
   xincrement = 0.005;
+  dialNum = 0;
 
   circle = {
     x: width / 2,
@@ -71,7 +72,7 @@ function update() {
  * This function controls the number of dot/points on the screen. It is called 'dial' because it looks like a dial controlling some variable.
  */
 function dial() {
-  dialNum = round(map(noise(2 * xoff), 0, 1, 0, 35));
+  dialNum = round(map(noise(20 * xoff), 0, 1, 0, 35));
 
   if (dialNum > points.length) {
     for (var i = 0; i < dialNum - points.length; i++) {
@@ -79,8 +80,8 @@ function dial() {
       gap = gap + 10;
     }
   } else if (dialNum < points.length) {
-    points.splice((points.length - 1) - (points.length - dialNum), points.length - dialNum);
     gap = gap - (10 * (points.length - dialNum));
+    points.splice((points.length) - (points.length - dialNum), points.length - dialNum);
   }
 
   for (var j = 0; j < points.length; j++) {
@@ -97,6 +98,7 @@ function keyTyped() {
     }
   }
 }
+
 
 /*  Comments for self
  *  @param {number} radius      This the universal radius that determines 
