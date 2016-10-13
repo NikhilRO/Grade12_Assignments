@@ -34,7 +34,7 @@ function setup() {
 
 function draw() {
   col = map(noise(3 * xoff), 0, 1, 25, 255);
-  background(175, col);
+  background(175, 0);
 
   displayCircle();
   update();
