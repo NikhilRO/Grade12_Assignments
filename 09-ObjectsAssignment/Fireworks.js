@@ -1,19 +1,21 @@
-function Fireworks(location, Endlocation, colour) {
+function Fireworks(location, endLocation) {
   this.velocity = -100;
-  this.endLocation = location;
+  this.endLocation = endLocation;
   this.location = location;
-  this.gravity = 9.8;
+  this.gravity = createVector(0,0.000098);
   this.radius = random(7, 14);
+  this.moveVector = p5.Vector.random2D();
 
   this.display = function() {
     fill(20, 0, 0);
     stroke(40, 0, 0);
     strokeWeight(5);
-    ellipse(location.x, location.y, 2 * radius, 2 * radius);
+    ellipse(this.location.x, this.location.y, 2 * this.radius, 2 * this.radius);
   }
 
   this.move = function() {
-
+    this.location.add(this.moveVector);
+    this.moveVector.add(this.gravity);
   }
 
   this.run = function() {
