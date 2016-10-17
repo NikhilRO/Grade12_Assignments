@@ -1,10 +1,10 @@
-function Fireworks(location, endLocation) {
+function Fireworks(location, endLocation, radius, moveVector) {
   this.velocity = -100;
   this.endLocation = endLocation;
   this.location = location;
   this.gravity = createVector(0,0.000098);
-  this.radius = random(7, 14);
-  this.moveVector = p5.Vector.random2D();
+  this.radius = radius;
+  this.moveVector = moveVector || p5.Vector.random2D();
 
   this.display = function() {
     fill(20, 0, 0);

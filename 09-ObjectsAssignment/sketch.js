@@ -1,6 +1,7 @@
 var startBlast, loadDestinations, explosion;
 var finalDestinations = [];
 var fire = [];
+var shooterCircle= new Firework(createVector(width/2, height), createVector(width/2, (1/4)*height), 40);
 
 
 function setup() {
@@ -8,19 +9,6 @@ function setup() {
   startBlast = false;
   loadDestinations = false;
   explosion = false;
-  var v = createVector(width / 2, height);
-
-
-  //what if we change this to a regular object
-  shooterCircle = {
-    display: function() {
-      fill(200, 0, 0);
-      stroke(255, 0, 0);
-      strokeWeight(10);
-      ellipse(shooterCircle.location.x, shooterCircle.location.y, 140, 140);
-    }
-  };
-  shooterCircle.location = v;
 }
 
 function draw() {
@@ -67,7 +55,7 @@ function fireworks() {
       startBlast = false;
       console.log(shooterCircle.location);
       for (var i = 0; i < finalDestinations.length; i++) {
-        fire.push(new Fireworks(shooterCircle.location, finalDestinations[i]));
+        fire.push(new Fireworks(shooterCircle.location, finalDestinations[i]), random(7,14));
       }
       shooterCircle = undefined;
     }
