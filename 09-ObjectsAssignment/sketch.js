@@ -57,7 +57,7 @@ function firework() {
       startBlast = false;
       //console.log(shooterCircle.location);
       for (var i = 0; i < finalDestinations.length; i++) {
-        fire.push(new Fireworks(shooterCircle.location, finalDestinations[i], random(7, 14)));
+        fire.push(new Fireworks(shooterCircle.location.copy(), finalDestinations[i], random(7, 14)));
       }
       shooterCircle = undefined;
     }
@@ -67,9 +67,9 @@ function firework() {
     for (var j = 0; j < fire.length; j++) {
       fire[j].run();
     }
-    if (frameCount % 10 === 1) {
-      noLoop();
-    }
+    // if (frameCount % 10 === 1) {
+    //   noLoop();
+    // }
   }
 }
 

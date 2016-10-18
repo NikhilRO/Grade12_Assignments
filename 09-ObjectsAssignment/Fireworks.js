@@ -16,8 +16,8 @@ function Fireworks(location, endLocation, radius, moveVector) {
 this.move = function() {
     // console.log("pre: " + this.moveVector);
     // console.log("pre: " + this.location);
-    this.location = (this.location).add(this.moveVector);
-    this.moveVector = (this.moveVector).add(this.gravity);
+    this.location.add(this.moveVector);
+    this.moveVector.add(this.gravity);
     // console.log("post: " + this.moveVector);
     // console.log("post: " + this.location);
   }
