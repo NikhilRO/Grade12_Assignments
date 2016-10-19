@@ -14,7 +14,7 @@ function setup() {
 }
 
 function draw() {
-  background(0,10);
+  background(0,50);
   destinations();
   firework();
 }
@@ -57,7 +57,7 @@ function firework() {
       startBlast = false;
       //console.log(shooterCircle.location);
       for (var i = 0; i < finalDestinations.length; i++) {
-        fire.push(new Fireworks(shooterCircle.location.copy(), finalDestinations[i], 3, (p5.Vector.random2D()).mult(5) ,true));
+        fire.push(new Fireworks(shooterCircle.location.copy(), finalDestinations[i], 1.3, (p5.Vector.random2D()).mult(5) ,true));
       }
       shooterCircle = undefined;
     }

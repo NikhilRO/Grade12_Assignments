@@ -12,7 +12,7 @@ function Fireworks(location, endLocation, radius, moveVector, attracted) {
   this.distance;
 
   this.display = function() {
-    fill(255, 230, 230);
+    fill(255, 0, 0);
     stroke(255,0,0);
     strokeWeight(2);
     
