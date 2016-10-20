@@ -10,11 +10,13 @@ function setup() {
   loadDestinations = false;
   explosion = false;
 
-  shooterCircle = new Fireworks(createVector(width / 2, height), createVector(width / 2, (1 / 4) * height), 10, createVector(0, -5));
+  shooterCircle = new Fireworks(createVector(width / 2, height), createVector(width / 2, (1 / 4) * height), 10, createVector(0, -7));
+
+  //frameRate(20);
 }
 
 function draw() {
-  background(0,50);
+  background(0, 50);
   destinations();
   firework();
 }
@@ -38,14 +40,15 @@ function destinations() {
 }
 
 function keyTyped() {
-  if (!loadDestinations) {
+  if (!loadDestinations && !explosion && !startBlast) {
     if (key === "B" || key === "b") { //Is this okay?
       startBlast = true;
     }
-    if (key === "R" || key === "r") {
-      reset();
-    }
   }
+  if (key === "R" || key === "r") {
+    reset();
+  }
+
 }
 
 function firework() {
@@ -57,7 +60,7 @@ function firework() {
       startBlast = false;
       //console.log(shooterCircle.location);
       for (var i = 0; i < finalDestinations.length; i++) {
-        fire.push(new Fireworks(shooterCircle.location.copy(), finalDestinations[i], 1.3, (p5.Vector.random2D()).mult(5) ,true));
+        fire.push(new Fireworks(shooterCircle.location.copy(), finalDestinations[i], 2, (p5.Vector.random2D()).mult(random(2.5, 7.5)), true));
       }
       shooterCircle = undefined;
     }
@@ -81,4 +84,7 @@ function reset() {
   explosion = false;
 
   shooterCircle = new Fireworks(createVector(width / 2, height), createVector(width / 2, (1 / 4) * height), 10, createVector(0, -5));
+
+  fire.splice(0, fire.length);
+
 }
