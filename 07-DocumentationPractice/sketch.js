@@ -170,7 +170,7 @@ function multiply(first, second) {
  */
 function divide(first, second) {
   if (second === 0) {
-    return "not defined";
+    return undefined;
   } else {
     return first / second;
   }
