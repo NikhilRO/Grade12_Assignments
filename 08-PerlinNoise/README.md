@@ -1,5 +1,5 @@
 # 08-Perlin Noise
 
-Practrising perlin noise 
+Practising perlin noise by creating a revolving and expanding dial. 
 
 ERROR NOTES:
