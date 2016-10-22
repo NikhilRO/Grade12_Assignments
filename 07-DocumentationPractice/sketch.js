@@ -20,7 +20,8 @@ function draw() {
   textDisplay();
 }
 
-/** This function displays the instruction to perform all the operations
+/**
+ * This function displays the instruction to perform all the operations
  */
 function textDisplay() {
   fill(255, 200);
@@ -39,10 +40,8 @@ function textDisplay() {
   conditionals();
 }
 
-/** This function displays text according to what operation is being performed
- *
- *  @param {string} stri   This is the string to display the array
- *  @param {string} stri2  This is the string to display the reversed array
+/**
+ * This function displays text according to what operation is being performed
  */
 function conditionals() {
 
@@ -187,7 +186,7 @@ function maximum(first, second) {
     return first;
   } else if (first <= second) {
     return second;
-  } 
+  }
 }
 
 /** This function takes in two float values and returns the smaller of those two values
@@ -201,13 +200,12 @@ function minimum(first, second) {
     return first;
   } else if (first >= second) {
     return second;
-  } 
+  }
 }
 
 /** This function takes in an array and reverses the order of the array
- *
- *  @param {array} temp   This is a temporary array used to store the reversed input array
- *  @return {array}       The input array with its elements' orders reversed
+ *  @param  {array} first  The array that is inputed into the function to be reversed
+ *  @return {array}        The input array with its elements' orders reversed
  */
 function reverseArray(first) {
   var temp = [];
@@ -230,4 +228,11 @@ text("{", mouseX - mouseX / 2 - 40, mouseY);
     }
     text("}", mouseX - mouseX / 2 + 40 * mouseValues.length, mouseY);
   }
-  */
+*/
+
+
+/* Comment for Self:
+ *  @var {string} stri   This is the string to display the array
+ *  @var {string} stri2  This is the string to display the reversed array
+  *  @var {array} temp   This is a temporary array used to store the reversed input array
+*/
