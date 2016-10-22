@@ -4,14 +4,9 @@
  * @constructor
  * @param {object}  endLocation        The vector location where the flame will end up
  * @param {object}  location           The vector location of the flame
- * @param {object}  gravity            The vector force of gravity applied on the flane  
  * @param {number}  radius             The radius of the flame 
  * @param {object}  moveVector         The vector velocity of the flame
  * @param {boolean} attracted          The boolean value to tell the flame if it is attracted to a location. 
- * @param {number}  time               The time before the flame changes it direction towards endLocation
- * @param {object}  attractiveForce    The vector force experienced by the flame once it starts moving towards its endLocation  
- * @param {number}  distance           The distance to endLocation from current location
- * @param {array}   emanate            An array to contain the "sparkles" that the flame emanates.
  */
 function Fireworks(location, endLocation, radius, moveVector, attracted) {
   this.endLocation = endLocation;
@@ -84,3 +79,12 @@ function Fireworks(location, endLocation, radius, moveVector, attracted) {
     this.move();
   }
 }
+
+
+/* Comment for self
+ * @var {object}  gravity            The vector force of gravity applied on the flane  
+ * @var {number}  time               The time before the flame changes it direction towards endLocation
+ * @var {object}  attractiveForce    The vector force experienced by the flame once it starts moving towards its endLocation  
+ * @var {number}  distance           The distance to endLocation from current location
+ * @var {array}   emanate            An array to contain the "sparkles" that the flame emanates.
+ */

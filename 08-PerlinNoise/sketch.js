@@ -104,7 +104,6 @@ function keyTyped() {
  *  @param {number} radius      This the universal radius that determines 
  *  @param {number} xoff        This is the variable for the offset of the noise function being used
  *  @param {number} xincrement  This increments the offset to move along the graph 
- *
  *  @param {number} dialNum   This is the number of the dots/points being drawn to the screen
  *  @param {number} gap       This adds a gap between two dots
  */

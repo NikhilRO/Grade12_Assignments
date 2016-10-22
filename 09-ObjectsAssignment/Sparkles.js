@@ -4,12 +4,11 @@
  * @constructor
  * @param {object}  location          The vector location of the flame
  * @param {number}  multiply          The factor by which the location is changed. Determines how far it goes 
- * @param {number}  disappear         The alpha factor determining its transparency
  */
 function Sparkles(location, multiply) {
   this.location = location;
   this.multiply = multiply || random(1, 10);
-  this.location.add((p5.Vector.random2D()).mult(this.multiply)); 
+  this.location.add((p5.Vector.random2D()).mult(this.multiply));
   this.disappear = 255;
 
   /**
@@ -39,3 +38,7 @@ function Sparkles(location, multiply) {
 //HOW TO USE RANDOM SUCH THAT IF GIVES MOST VALUES IN THAT RANGE BUT ONCE IN A WHILE A LARGER VALUE?
 For now created two ways to add the sparkles, one more frequent than the other.
 */
+
+/* Comment for self
+ * @var {number}  disappear         The alpha factor determining its transparency
+ */

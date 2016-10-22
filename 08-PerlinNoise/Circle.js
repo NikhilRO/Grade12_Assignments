@@ -2,8 +2,8 @@
  * Represents a dot/point/circle.
  * @class
  * @constructor
- * @param {number}  x -        The initial x position of the point
- * @param {number}  y -        The initial y position of the point
+ * @param {number}  x          The initial x position of the point
+ * @param {number}  y          The initial y position of the point
  * @param {number}  start      The initial angle at which the point starts 
  * @param {number}  radius     The initial radius of the circle of which the point forms a part
  * @param {boolean} clockwise  The initial direction of motion the point
@@ -51,3 +51,7 @@ function Circle(x, y, start, radius, clockwise) {
     this.radius = x;
   }
 }
+
+
+/* Comment for self
+*/
