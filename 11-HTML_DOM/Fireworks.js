@@ -22,6 +22,7 @@ function Fireworks(location, endLocation, radius, moveVector, attracted) {
 
   /**
    * Displays the flame on the screen and controls the "sparkles" emanated/emitted by the flame 
+   * @see {@link loadSparkles}
    */
   this.display = function() {
     fill(255, 0, 0);
@@ -29,18 +30,25 @@ function Fireworks(location, endLocation, radius, moveVector, attracted) {
     strokeWeight(2);
     ellipse(this.location.x, this.location.y, 2 * this.radius, 2 * this.radius);
 
+    this.loadSparkles();
 
-    if (frameCount % 3 === 0) {
-      this.emanate.push(new Sparkles(this.location.copy()));
-    }
-    if (frameCount % 15 === 0) {
-      this.emanate.push(new Sparkles(this.location.copy(), random(10, 30)));
-    }
     for (var i = 0; i < this.emanate.length; i++) {
       this.emanate[i].display();
       if (this.emanate[i].diappearanceCheck()) {
         this.emanate.splice(i, 1);
       }
+    }
+  }
+
+  /**
+   * Creates the "sparkles" emanated/emitted by the flame 
+   */
+  this.loadSparkles = function() {
+    if (frameCount % 3 === 0) {
+      this.emanate.push(new Sparkles(this.location.copy()));
+    }
+    if (frameCount % 15 === 0) {
+      this.emanate.push(new Sparkles(this.location.copy(), random(10, 30)));
     }
   }
 

@@ -1,4 +1,4 @@
-var startBlast, loadDestinations, explosion, shooterCircle;
+var startBlast, loadDestinations, explosion, shooterCircle, slider, externalVar;
 var finalDestinations = [];
 var fire = [];
 
@@ -10,11 +10,15 @@ function setup() {
   loadDestinations = false;
   explosion = false;
 
+  slider = createSlider(0, 50, 5, 1);
+  slider.style('width', '99%');
+
   shooterCircle = new Fireworks(createVector(width / 2, height), createVector(width / 2, (1 / 4) * height), 10, createVector(0, -7));
 }
 
 function draw() {
-  background(0, 50);
+  externalVariable = slider.value();
+  background(0, externalVariable);
   destinations();
   firework();
 }
@@ -26,7 +30,7 @@ function mouseDragged() {
 }
 
 /** 
- * This function helps to load the destinations for the fireworks later
+ * This function helps to load the destinations for the fireworks later. In other words, this function add items to the finalDestinations array
  */
 function destinations() {
   if (loadDestinations) {
