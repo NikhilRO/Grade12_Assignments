@@ -8,4 +8,4 @@ Following the theme of fire created a fireworks animated/dynamic visual, *with t
 3. Press "R" or "r" to reset the program.
 
 **Error notes:**
-Always duplicate a vector before sending it to an object otherwise all the objects created will point to the same location in the memory. Check Issue (#3){https://github.com/NikhilRO/Grade12_Assignments/issues/3} for more info
+Always duplicate a vector before sending it to an object otherwise all the objects created will point to the same location in the memory. Check Issue [3](https://github.com/NikhilRO/Grade12_Assignments/issues/3)or more info
