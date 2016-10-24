@@ -8,7 +8,7 @@
  * @param {object}  moveVector         The vector velocity of the flame
  * @param {boolean} attracted          The boolean value to tell the flame if it is attracted to a location. 
  */
-function Fireworks(location, endLocation, radius, moveVector, attracted) {
+function Fireworks(location, endLocation, radius, moveVector, attracted, noSparkles) {
   this.endLocation = endLocation;
   this.location = location;
   this.gravity = createVector(0, 0.098);
@@ -19,26 +19,29 @@ function Fireworks(location, endLocation, radius, moveVector, attracted) {
   this.attractiveForce;
   this.distance;
   this.emanate = [];
+  this.noSparkles = noSparkles || false;
 
-  /**
-   * Displays the flame on the screen and controls the "sparkles" emanated/emitted by the flame 
-   * @see {@link loadSparkles}
-   */
-  this.display = function() {
-    fill(255, 0, 0);
-    stroke(255, 0, 0);
-    strokeWeight(2);
-    ellipse(this.location.x, this.location.y, 2 * this.radius, 2 * this.radius);
+    /**
+     * Displays the flame on the screen and controls the "sparkles" emanated/emitted by the flame 
+     * @see {@link loadSparkles}
+     */
+    this.display = function() {
+      fill(255, 0, 0);
+      stroke(255, 0, 0);
+      strokeWeight(2);
+      ellipse(this.location.x, this.location.y, 2 * this.radius, 2 * this.radius);
 
-    this.loadSparkles();
+      if (!this.noSparkles) {
+        this.loadSparkles();
 
-    for (var i = 0; i < this.emanate.length; i++) {
-      this.emanate[i].display();
-      if (this.emanate[i].diappearanceCheck()) {
-        this.emanate.splice(i, 1);
+        for (var i = 0; i < this.emanate.length; i++) {
+          this.emanate[i].display();
+          if (this.emanate[i].diappearanceCheck()) {
+            this.emanate.splice(i, 1);
+          }
+        }
       }
     }
-  }
 
   /**
    * Creates the "sparkles" emanated/emitted by the flame 

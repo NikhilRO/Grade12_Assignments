@@ -1,4 +1,4 @@
-var startBlast, loadDestinations, explosion, shooterCircle, slider, externalVar;
+var startBlast, loadDestinations, explosion, shooterCircle, slider, externalVar, externalBoolean;
 var finalDestinations = [];
 var fire = [];
 
@@ -10,6 +10,10 @@ function setup() {
   loadDestinations = false;
   explosion = false;
 
+  button = createButton('Make it faster');
+  // button.position(19, 19);
+  // button.mousePressed(externalBoolean);
+
   slider = createSlider(0, 50, 5, 1);
   slider.style('width', '99%');
 
@@ -17,8 +21,11 @@ function setup() {
 }
 
 function draw() {
+  button.mousePressed(externalBoolean = !externalBoolean);
+
   externalVariable = slider.value();
   background(0, externalVariable);
+
   destinations();
   firework();
 }
