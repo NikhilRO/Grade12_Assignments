@@ -6,7 +6,7 @@ Following the theme of fire created a fireworks animated/dynamic visual, *with t
 
 The added slidebar alters the alpha value of the background, thereby changing the transparency of the background.
 
-The added gives the user the option to disable sparks from fireworks, thereby reducing the number of computations and making the program faster. 
+The added button gives the user the option to disable sparks from fireworks, thereby reducing the number of computations and making the program faster. 
 
 ## Instructions:
 1. Move around the mouse while clicking it to store the end locations of the flames of the fireworks
