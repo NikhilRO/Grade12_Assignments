@@ -7,7 +7,7 @@ var fire = [];
 function setup() {
   button = createButton('Make it faster');
   button.style('width', '10%');
-  button.position(windowWidth / 2 - windowWidth/10, 20);
+  button.position(windowWidth / 2 - windowWidth/20, 20);
 
   createCanvas(windowWidth, windowHeight);
   startBlast = false;
