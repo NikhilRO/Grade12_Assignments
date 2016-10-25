@@ -43,7 +43,7 @@ function fractalTree(n) {
 
     push();
     rotate(-radians(32));
-    fractalTree(2);
+    fractalTree(n-1);
     pop();
   }
 
