@@ -7,6 +7,7 @@
  * @param {number}  radius             The radius of the flame 
  * @param {object}  moveVector         The vector velocity of the flame
  * @param {boolean} attracted          The boolean value to tell the flame if it is attracted to a location. 
+ * @param {boolean} noSparkles         The boolean value to determine flame behaviour
  */
 function Fireworks(location, endLocation, radius, moveVector, attracted, noSparkles) {
   this.endLocation = endLocation;
@@ -21,27 +22,27 @@ function Fireworks(location, endLocation, radius, moveVector, attracted, noSpark
   this.emanate = [];
   this.noSparkles = noSparkles || false;
 
-    /**
-     * Displays the flame on the screen and controls the "sparkles" emanated/emitted by the flame 
-     * @see {@link loadSparkles}
-     */
-    this.display = function() {
-      fill(255, 0, 0);
-      stroke(255, 0, 0);
-      strokeWeight(2);
-      ellipse(this.location.x, this.location.y, 2 * this.radius, 2 * this.radius);
+  /**
+   * Displays the flame on the screen and controls the "sparkles" emanated/emitted by the flame 
+   * @see {@link loadSparkles}
+   */
+  this.display = function() {
+    fill(255, 0, 0);
+    stroke(255, 0, 0);
+    strokeWeight(2);
+    ellipse(this.location.x, this.location.y, 2 * this.radius, 2 * this.radius);
 
-      if (!this.noSparkles) {
-        this.loadSparkles();
+    if (!this.noSparkles) {
+      this.loadSparkles();
 
-        for (var i = 0; i < this.emanate.length; i++) {
-          this.emanate[i].display();
-          if (this.emanate[i].diappearanceCheck()) {
-            this.emanate.splice(i, 1);
-          }
+      for (var i = 0; i < this.emanate.length; i++) {
+        this.emanate[i].display();
+        if (this.emanate[i].diappearanceCheck()) {
+          this.emanate.splice(i, 1);
         }
       }
     }
+  }
 
   /**
    * Creates the "sparkles" emanated/emitted by the flame 
@@ -88,6 +89,14 @@ function Fireworks(location, endLocation, radius, moveVector, attracted, noSpark
   this.run = function() {
     this.display()
     this.move();
+  }
+
+  /**
+   * Changes the noSparkles according to user need
+   * @param {boolean} b         The boolean value to determine flame behaviour
+   */
+  this.runFaster = function(b) {
+    this.noSparkles = b;
   }
 }
 

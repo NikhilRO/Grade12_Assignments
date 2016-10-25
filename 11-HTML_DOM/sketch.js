@@ -1,18 +1,21 @@
-var startBlast, loadDestinations, explosion, shooterCircle, slider, externalVar, externalBoolean;
+var startBlast, loadDestinations, explosion, shooterCircle, slider, externalVar, externalBoolean, button;
 var finalDestinations = [];
 var fire = [];
 
 
 
 function setup() {
+  button = createButton('Make it faster');
+  //button.style('width', '99%');
+  button.position(windowWidth / 2 - 50, 19);
+  // button.mousePressed(externalBoolean);
+
   createCanvas(windowWidth, windowHeight);
   startBlast = false;
   loadDestinations = false;
   explosion = false;
+  externalBoolean = false;
 
-  button = createButton('Make it faster');
-  // button.position(19, 19);
-  // button.mousePressed(externalBoolean);
 
   slider = createSlider(0, 50, 5, 1);
   slider.style('width', '99%');
@@ -21,13 +24,23 @@ function setup() {
 }
 
 function draw() {
-  button.mousePressed(externalBoolean = !externalBoolean);
+  button.mousePressed(changeBoolean);
 
   externalVariable = slider.value();
   background(0, externalVariable);
 
   destinations();
   firework();
+}
+
+/** 
+ * This function calls the fireworks to change flame behaviour accoring to user expection
+ */
+function changeBoolean() {
+  externalBoolean = !externalBoolean
+  for (var j = 0; j < fire.length; j++) {
+    fire[j].runFaster(externalBoolean);
+  }
 }
 
 function mouseDragged() {
@@ -74,7 +87,7 @@ function firework() {
       explosion = true;
       startBlast = false;
       for (var i = 0; i < finalDestinations.length; i++) {
-        fire.push(new Fireworks(shooterCircle.location.copy(), finalDestinations[i], 2, (p5.Vector.random2D()).mult(random(2.5, 7.5)), true));
+        fire.push(new Fireworks(shooterCircle.location.copy(), finalDestinations[i], 2, (p5.Vector.random2D()).mult(random(2.5, 7.5)), true, externalBoolean));
       }
       shooterCircle = undefined;
     }
