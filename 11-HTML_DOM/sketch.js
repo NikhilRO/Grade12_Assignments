@@ -6,8 +6,8 @@ var fire = [];
 
 function setup() {
   button = createButton('Make it faster');
-  //button.style('width', '99%');
-  button.position(windowWidth / 2 - 50, 19);
+  button.style('width', '10%');
+  button.position(windowWidth / 2 - windowWidth/10, 20);
   // button.mousePressed(externalBoolean);
 
   createCanvas(windowWidth, windowHeight);
@@ -17,7 +17,7 @@ function setup() {
   externalBoolean = false;
 
 
-  slider = createSlider(0, 50, 5, 1);
+  slider = createSlider(0, 50, 20, 1);
   slider.style('width', '99%');
 
   shooterCircle = new Fireworks(createVector(width / 2, height), createVector(width / 2, (1 / 4) * height), 10, createVector(0, -7));
