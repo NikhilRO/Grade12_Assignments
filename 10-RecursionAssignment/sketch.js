@@ -78,7 +78,7 @@ function displayCircle() {
   noStroke();
   strokeWeight(1);
   fill(0, 190, 255);
-  ellipse(width / 2, height / 2, radius / 2, radius / 2);
+  //ellipse(width / 2, height / 2, radius / 2, radius / 2);
 }
 
 
