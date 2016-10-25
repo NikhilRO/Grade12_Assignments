@@ -42,6 +42,7 @@ function Fireworks(location, endLocation, radius, moveVector, attracted, noSpark
         }
       }
     }
+    
   }
 
   /**
@@ -93,10 +94,13 @@ function Fireworks(location, endLocation, radius, moveVector, attracted, noSpark
 
   /**
    * Changes the noSparkles according to user need
-   * @param {boolean} b         The boolean value to determine flame behaviour
+   * @param {boolean} b         The boolean value that user gives to determine flame behaviour
    */
   this.runFaster = function(b) {
     this.noSparkles = b;
+    if(this.noSparkles){
+      this.emanate.splice(0, this.emanate.length);
+    }
   }
 }
 

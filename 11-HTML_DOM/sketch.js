@@ -8,7 +8,6 @@ function setup() {
   button = createButton('Make it faster');
   button.style('width', '10%');
   button.position(windowWidth / 2 - windowWidth/10, 20);
-  // button.mousePressed(externalBoolean);
 
   createCanvas(windowWidth, windowHeight);
   startBlast = false;
@@ -37,7 +36,8 @@ function draw() {
  * This function calls the fireworks to change flame behaviour accoring to user expection
  */
 function changeBoolean() {
-  externalBoolean = !externalBoolean
+  console.log("bool");
+  externalBoolean = !externalBoolean;
   for (var j = 0; j < fire.length; j++) {
     fire[j].runFaster(externalBoolean);
   }
