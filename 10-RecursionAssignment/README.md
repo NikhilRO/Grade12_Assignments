@@ -1,5 +1,7 @@
-# 08-Perlin Noise
+# 10-RecursionAssignment
 
-###Practising perlin noise by creating a revolving and expanding dial. 
+###Create a program to employ recursion
 
-Error Notes: [Check Issue #2](https://github.com/NikhilRO/Grade12_Assignments/issues/2)
+Following the theme of water, the program uses recursion to create lines (with lengths in Geometric Sequence) in the program to give the impression of the top view of a frozen mountain/structure.
+
+
