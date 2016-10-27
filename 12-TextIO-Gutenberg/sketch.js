@@ -1,19 +1,21 @@
 var story = [];
-var storyWords = [];
+var storyWords;
 var previousWidth, lineNumber;
 var img;
 
 function preload() {
   story = loadStrings('rhesus.txt');
   img = loadImage("image.jpeg");
-  storyWords = split(story[10]," ");
 }
 
 function setup() {
   previousWidth = 0
   lineNumber = 0;
 
+  storyWords.push(split(story[i]," ");
   console.log(storyWords.length);
+
+  //console.log(storyWords.length);
   createCanvas(windowWidth, windowHeight);
 
 
