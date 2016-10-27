@@ -1,10 +1,18 @@
-var story= [];
+var story = [];
+var img;
+
 function preload() {
-  story = loadStrings('rhesus.txt');
+  //story = loadStrings('rhesus.txt');
+  img = loadImage("image.jpeg");
 }
 
 function setup() {
-    console.log(story.length);
+  // console.log(story.length);
+  createCanvas(windowWidth, windowHeight);
+
+  image(img, 0, 0, windowWidth, windowHeight);
+
+  noCursor();
 }
 
 function draw() {
