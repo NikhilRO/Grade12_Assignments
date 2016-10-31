@@ -7,7 +7,7 @@ var img, bPrev;
 
 function preload() {
   story = loadStrings('rhesus.txt');
-  img = loadImage("image.jpeg");
+  img = loadImage("checkeredFloor.png");
 }
 
 function setup() {
@@ -29,27 +29,29 @@ function setup() {
   }
 
 
-  console.log(story.length);
-  console.log(storyWords.length);
+  // console.log(story.length);
+  // console.log(storyWords.length);
   console.log(storyChar.length);
 
   createCanvas(windowWidth, windowHeight);
 
-  image(img, 0, 0, windowWidth, windowHeight);
+  //image(img, 0, 0, windowWidth, windowHeight);
   img.resize(windowWidth, windowHeight);
   img.loadPixels();
   for (var a = 0; a < img.height; a += 8) {
     for (var b = 0; b < img.width; b += storyChar[a + bPrev].length) {
-      colImage.push(color(img.pixels[b + a * width].red, img.pixels[b + a * width].green, img.pixels[b + a * width].blue));
+      colImage.push(color(img.pixels[4 * (b + a * width)], img.pixels[4 * (b + a * width) + 1], img.pixels[4 * (b + a * width) + 2]));
       bPrev++;
+      //break;
     }
     bPrev = 0;
+    //break;
   }
   img.updatePixels();
   console.log(colImage.length);
 
   for (var i = 0; i < colImage.length; i++) {
-    stroke(colImage[i]);
+    fill(colImage[i]);
     textSize(8);
     text(storyChar[i], previousWidth, lineNumber * 8);
     previousWidth += textWidth(storyChar[i]) + 1;
