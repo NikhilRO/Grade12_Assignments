@@ -33,16 +33,15 @@ function setup() {
   // console.log(storyWords.length);
   console.log(storyChar.length);
 
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(500, 500);
 
   //image(img, 0, 0, windowWidth, windowHeight);
-  img.resize(windowWidth, windowHeight);
+  img.resize(500, 500); //windowWidth, windowHeight);
   img.loadPixels();
   for (var a = 0; a < img.height; a += 8) {
-    for (var b = 0; b < img.width; b += storyChar[a + bPrev].length) {
-      colImage.push(color(img.pixels[4 * (b + a * width)], img.pixels[4 * (b + a * width) + 1], img.pixels[4 * (b + a * width) + 2]));
+    for (var b = 0; b < img.width; b += textWidth(storyChar[a * img.width + bPrev])) {
+      colImage.push(color(img.pixels[4 * (b + a * img.width)], img.pixels[4 * (b + a * img.width) + 1], img.pixels[4 * (b + a * img.width) + 2]));
       bPrev++;
-      //break;
     }
     bPrev = 0;
     //break;
@@ -52,9 +51,8 @@ function setup() {
 
   for (var i = 0; i < colImage.length; i++) {
     fill(colImage[i]);
-    textSize(8);
     text(storyChar[i], previousWidth, lineNumber * 8);
-    previousWidth += textWidth(storyChar[i]) + 1;
+    previousWidth += textWidth(storyChar[i])+1;
     if (previousWidth > windowWidth) { //CAN I USE WIDTH?
       previousWidth = 0;
       lineNumber++;
