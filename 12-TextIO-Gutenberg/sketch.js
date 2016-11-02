@@ -6,65 +6,70 @@ var previousWidth, lineNumber;
 var img, bPrev;
 
 function preload() {
-  story = loadStrings('rhesus.txt');
-  img = loadImage("checkeredFloor.png");
+  story = loadStrings('rhesus.txt', textToChar);
+  img = loadImage("IMG_20160916_230956 (2).jpg"); // 147812671127325.jpg // 147812671127325.png // checkeredBig.png //DSC_0672.JPG //image.jpeg //DSC_0672WhiteBackground.png // DSC_0672WhiteBackgroundExperiment.png //Albert_Einstein.png
 }
 
 function setup() {
   previousWidth = 0
   lineNumber = 0;
-  bPrev = 0;
-  for (var j = 500; j < story.length - 100; j++) {
-    var tempArray = splitTokens(story[j], " \-\?!*_,.");
-    for (var k = 0; k < tempArray.length; k++) {
-      storyWords.push(tempArray[k].toLowerCase());
-    }
-  }
+  bPrev = -1;
 
-  for (var l = 100; l < storyWords.length; l++) {
-    var tempArray2 = split(storyWords[l], "");
-    for (var m = 0; m < tempArray2.length; m++) {
-      storyChar.push(tempArray2[m].toLowerCase());
-    }
-  }
-
-
-  // console.log(story.length);
-  // console.log(storyWords.length);
+  console.log(story.length);
+  console.log(storyWords.length);
   console.log(storyChar.length);
 
-  createCanvas(500, 500);
+  createCanvas(1366, 1366);
 
-  //image(img, 0, 0, windowWidth, windowHeight);
-  img.resize(500, 500); //windowWidth, windowHeight);
+
+  img.resize(width, height); //windowWidth, windowHeight);
+  //image(img, 0, 0);
+
   img.loadPixels();
   for (var a = 0; a < img.height; a += 8) {
-    for (var b = 0; b < img.width; b += textWidth(storyChar[a * img.width + bPrev])) {
-      colImage.push(color(img.pixels[4 * (b + a * img.width)], img.pixels[4 * (b + a * img.width) + 1], img.pixels[4 * (b + a * img.width) + 2]));
+    for (var b = 0; b < img.width; b += textWidth(storyChar[bPrev])) {
+      colImage.push(color(img.pixels[4 * (b + a * img.width)], img.pixels[4 * (b + a * img.width) + 1], img.pixels[4 * (b + a * img.width) + 2])); //(img.pixels[4 * (b + a * img.width)], img.pixels[4 * (b + a * img.width) + 1], img.pixels[4 * (b + a * img.width) + 2]));
       bPrev++;
     }
-    bPrev = 0;
-    //break;
   }
+
   img.updatePixels();
   console.log(colImage.length);
 
   for (var i = 0; i < colImage.length; i++) {
-    fill(colImage[i]);
+    fill(colImage[i]); //HOW TO USE THE COLOR FOR EXTREMES ONLY
     text(storyChar[i], previousWidth, lineNumber * 8);
-    previousWidth += textWidth(storyChar[i])+1;
-    if (previousWidth > windowWidth) { //CAN I USE WIDTH?
+    previousWidth += textWidth(storyChar[i]);
+    if (previousWidth >= width) { //CAN I USE WIDTH?
       previousWidth = 0;
       lineNumber++;
     }
   }
 
 
-  // noCursor();
+ // noCursor();
 
 }
 
 function draw() {}
+
+
+function textToChar() {
+  textSize(5);
+  for (var j = 100; j < story.length - 100; j++) {
+    var tempArray = splitTokens(story[j], " \-\?!*_,.");
+    for (var k = 0; k < tempArray.length; k++) {
+      storyWords.push(tempArray[k].toLowerCase());
+    }
+  }
+
+  for (var l = 0; l < storyWords.length; l++) {
+    var tempArray2 = split(storyWords[l], "");
+    for (var m = 0; m < tempArray2.length; m++) {
+      storyChar.push(tempArray2[m].toLowerCase()); //HOW TO CHANGE THE SIZE OF EACH CHARACTER
+    }
+  }
+}
 
 /* Comment of self
 //prints words
