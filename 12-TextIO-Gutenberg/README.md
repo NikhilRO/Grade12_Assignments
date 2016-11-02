@@ -4,7 +4,7 @@
 
  ![This Cat Means Business](catText.png)
 
-                                                                                                                        *-you mad?*
+                                                       *-you mad?*
 
 This program can take any picture and display it using nothing but text.
 
