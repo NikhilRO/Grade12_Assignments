@@ -6,10 +6,13 @@ var fire = [];
 
 function setup() {
   button = createButton('Make it faster');
-  button.style('width', '10%');
-  button.position(windowWidth / 2 - windowWidth/20, 20);
+  button.style('width', '20%');
+  button.style('height', '2%');
+  button.position(windowWidth / 2 - windowWidth / 10, 4);
+  button.mousePressed(changeBoolean);
 
-  createCanvas(windowWidth, windowHeight);
+  var cnv= createCanvas(windowWidth, windowHeight*18.5/20);
+  cnv.position(0,windowHeight*(1/30));
   startBlast = false;
   loadDestinations = false;
   explosion = false;
@@ -18,13 +21,12 @@ function setup() {
 
   slider = createSlider(0, 50, 20, 1);
   slider.style('width', '99%');
+  slider.position(windowWidth*(.25/100), windowHeight*19.25/20);
 
   shooterCircle = new Fireworks(createVector(width / 2, height), createVector(width / 2, (1 / 4) * height), 10, createVector(0, -7));
 }
 
 function draw() {
-  button.mousePressed(changeBoolean);
-
   externalVariable = slider.value();
   background(0, externalVariable);
 
@@ -42,6 +44,7 @@ function changeBoolean() {
     fire[j].runFaster(externalBoolean);
   }
 }
+
 
 function mouseDragged() {
   if (!startBlast && !explosion) {
