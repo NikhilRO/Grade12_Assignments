@@ -7,7 +7,7 @@ var img, bPrev;
 
 function preload() {
   story = loadStrings('rhesus.txt', textToChar);
-  img = loadImage("IMG_20160916_230956 (2).jpg"); // 147812671127325.jpg // 147812671127325.png // checkeredBig.png //DSC_0672.JPG //image.jpeg //DSC_0672WhiteBackground.png // DSC_0672WhiteBackgroundExperiment.png //Albert_Einstein.png
+  img = loadImage("cat.jpg"); // DSC_0672.JPG //image.jpeg //DSC_0672WhiteBackground.png //Albert_Einstein.png
 }
 
 function setup() {
@@ -15,11 +15,8 @@ function setup() {
   lineNumber = 0;
   bPrev = -1;
 
-  console.log(story.length);
-  console.log(storyWords.length);
-  console.log(storyChar.length);
 
-  createCanvas(1366, 1366);
+  createCanvas(1920, 1080); //1920,1080
 
 
   img.resize(width, height); //windowWidth, windowHeight);
@@ -32,8 +29,11 @@ function setup() {
       bPrev++;
     }
   }
-
   img.updatePixels();
+
+  console.log(story.length);
+  console.log(storyWords.length);
+  console.log(storyChar.length);
   console.log(colImage.length);
 
   for (var i = 0; i < colImage.length; i++) {
@@ -45,15 +45,14 @@ function setup() {
       lineNumber++;
     }
   }
-
-
- // noCursor();
-
+  //noCursor();
 }
 
 function draw() {}
 
-
+/** 
+ * This function takes the text/story and converts it into arrays with words and characters
+ */
 function textToChar() {
   textSize(5);
   for (var j = 100; j < story.length - 100; j++) {
