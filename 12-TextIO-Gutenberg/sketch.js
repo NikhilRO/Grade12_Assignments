@@ -7,7 +7,7 @@ var img, bPrev;
 
 function preload() {
   story = loadStrings('rhesus.txt', textToChar);
-  img = loadImage("cat.jpg"); // DSC_0672.JPG //image.jpeg //DSC_0672WhiteBackground.png //Albert_Einstein.png
+  img = loadImage("skull.jpg"); // DSC_0672.JPG //image.jpeg //DSC_0672WhiteBackground.png //Albert_Einstein.png
 }
 
 function setup() {
@@ -16,7 +16,7 @@ function setup() {
   bPrev = -1;
 
 
-  createCanvas(1920, 1080); //1920,1080
+  createCanvas(1366,768); //1920,1080
 
 
   img.resize(width, height); //windowWidth, windowHeight);
