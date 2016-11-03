@@ -70,12 +70,12 @@ function textToChar() {
   }
 }
 
-function resetToDefaultFontSize() {
-   var p = document.getElementsByTagName('div');
-   for(i=0;i<p.length;i++) {
-      p[i].style.fontSize = "12px";
-   }
-}
+// function resetToDefaultFontSize() {
+//   var p = document.getElementsByTagName('div');
+//   for(i=0;i<p.length;i++) {
+//       p[i].style.fontSize = "12px";
+//   }
+// }
 
 /* Comment of self
 //prints words
