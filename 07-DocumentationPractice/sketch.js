@@ -143,8 +143,8 @@ function addition(first, second) {
 
 /** This function takes in two float values and returns the difference of those two values
  *
- *  @param {number} first   This is the first float of the sum
- *  @param {number} second  This is the second float of the sum
+ *  @param {number} first   This is the first float
+ *  @param {number} second  This is the second float
  *  @return {number}        The difference of first and second as a float value
  */
 function subtract(first, second) {
@@ -153,8 +153,8 @@ function subtract(first, second) {
 
 /** This function takes in two float values and returns the product of those two values
  *
- *  @param {number} first   This is the first float of the sum
- *  @param {number} second  This is the second float of the sum
+ *  @param {number} first   This is the first float
+ *  @param {number} second  This is the second float 
  *  @return {number}        The product of first and second as a float value
  */
 function multiply(first, second) {
@@ -163,8 +163,8 @@ function multiply(first, second) {
 
 /** This function takes in two float values and returns the result of dividing of those two values
  *
- *  @param {number} first   This is the first float of the sum
- *  @param {number} second  This is the second float of the sum
+ *  @param {number} first   This is the first float 
+ *  @param {number} second  This is the second float 
  *  @return {number}        The result of dividing of first and second as a float value
  */
 function divide(first, second) {
@@ -177,8 +177,8 @@ function divide(first, second) {
 
 /** This function takes in two float values and returns the bigger of those two values
  *
- *  @param {number} first   This is the first float of the sum
- *  @param {number} second  This is the second float of the sum
+ *  @param {number} first   This is the first float
+ *  @param {number} second  This is the second float 
  *  @return {number}        The bigger of first and second as a float value
  */
 function maximum(first, second) {
@@ -191,8 +191,8 @@ function maximum(first, second) {
 
 /** This function takes in two float values and returns the smaller of those two values
  *
- *  @param {number} first   This is the first float of the sum
- *  @param {number} second  This is the second float of the sum
+ *  @param {number} first   This is the first float 
+ *  @param {number} second  This is the second float
  *  @return {number}        The smaller of first and second as a float value
  */
 function minimum(first, second) {
