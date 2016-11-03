@@ -38,7 +38,7 @@ function setup() {
 
   for (var i = 0; i < colImage.length; i++) {
     fill(colImage[i]); //HOW TO USE THE COLOR FOR EXTREMES ONLY
-    text(storyChar[i], previousWidth, lineNumber * 8);
+    text(storyChar[i].bold(), previousWidth, lineNumber * 8); // ADDED BOLD
     previousWidth += textWidth(storyChar[i]);
     if (previousWidth >= width) { //CAN I USE WIDTH?
       previousWidth = 0;
