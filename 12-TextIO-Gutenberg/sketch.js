@@ -35,13 +35,13 @@ function setup() {
   console.log(storyWords.length);
   console.log(storyChar.length);
   console.log(colImage.length);
-  console.log(storyChar[100].bold());
+  console.log(storyChar[100].bold().fontsize(80));
   console.log(storyChar[100]);
   //break()
 
   for (var i = 0; i < colImage.length; i++) {
     fill(colImage[i]); //HOW TO USE THE COLOR FOR EXTREMES ONLY
-    textStyle(BOLD);
+    //textStyle(BOLD);
     text(storyChar[i], previousWidth, lineNumber * 8); 
     previousWidth += textWidth(storyChar[i]);
     if (previousWidth >= width) { 
