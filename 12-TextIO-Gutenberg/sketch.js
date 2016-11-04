@@ -16,7 +16,7 @@ function setup() {
   bPrev = -1;
 
 
-  createCanvas(1366,768); //1920,1080
+  createCanvas(1920,1080);//1366, 768); //1920,1080
 
 
   img.resize(width, height); //windowWidth, windowHeight);
@@ -35,16 +35,21 @@ function setup() {
   console.log(storyWords.length);
   console.log(storyChar.length);
   console.log(colImage.length);
+  console.log(storyChar[100].bold());
+  console.log(storyChar[100]);
+  //break()
 
   for (var i = 0; i < colImage.length; i++) {
     fill(colImage[i]); //HOW TO USE THE COLOR FOR EXTREMES ONLY
-    text(storyChar[i].bold(), previousWidth, lineNumber * 8); // ADDED BOLD
+    textStyle(BOLD);
+    text(storyChar[i], previousWidth, lineNumber * 8); 
     previousWidth += textWidth(storyChar[i]);
-    if (previousWidth >= width) { //CAN I USE WIDTH?
+    if (previousWidth >= width) { 
       previousWidth = 0;
       lineNumber++;
     }
   }
+
   //noCursor();
 }
 
@@ -54,7 +59,6 @@ function draw() {}
  * This function takes the text/story and converts it into arrays with words and characters
  */
 function textToChar() {
-  textSize(5);
   for (var j = 100; j < story.length - 100; j++) {
     var tempArray = splitTokens(story[j], " \-\?!*_,.");
     for (var k = 0; k < tempArray.length; k++) {
@@ -65,9 +69,12 @@ function textToChar() {
   for (var l = 0; l < storyWords.length; l++) {
     var tempArray2 = split(storyWords[l], "");
     for (var m = 0; m < tempArray2.length; m++) {
+      
       storyChar.push(tempArray2[m].toLowerCase()); //HOW TO CHANGE THE SIZE OF EACH CHARACTER
+      
     }
   }
+  
 }
 
 // function resetToDefaultFontSize() {
