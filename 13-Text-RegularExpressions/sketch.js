@@ -12,8 +12,9 @@ function setup() {
   console.log("Two Digit Numbers: " + block.match(/\b\d{2}\b/g).length);
   console.log("Three Digit Numbers: " + block.match(/\b\d{3}\b/g).length);
   console.log("Four Digit Numbers: " + block.match(/\b\d{4}\b/g).length);
-  console.log("Italics: " + block.match(/\b \*\w\* \b/g).length);
-
+  console.log("Italics: " + block.match(/\b\_.*?\_\b/g).length);
+  console.log("Symbols: " + block.match(/\b\_.*?\_\b/g).length);
+  
 
   // console.log(story.length);
 }
@@ -25,7 +26,7 @@ function draw() {}
  */
 function lineToBlock() {
   for (var i = 0; i < story.length; i++) {
-    block = block + "" + story[i];
+    block = block + " " + story[i];
   }
 }
 
