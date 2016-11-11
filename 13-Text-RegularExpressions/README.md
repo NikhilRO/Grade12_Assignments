@@ -2,9 +2,7 @@
 
 ### Create a program to access text from an external file and visualize it
 
- ![This Cat Means Business](catText.png)
-                                           *-you mad?*
-                                           
+[Greedy Algorithms](https://youtu.be/c9HbsUSWilw?list=PLRqwX-V7Uu6YEypLuls7iidwHMdCM6o2w)
                                            
 This program can take any picture and display it using nothing but text.
 
