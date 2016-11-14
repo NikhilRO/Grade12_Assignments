@@ -22,7 +22,5 @@ function setup() {
  * This function takes the array of text/story and converts it one big block/string 
  */
 function lineToBlock() {
-  for (var i = 0; i < story.length; i++) {
-    block = block + " " + story[i];
-  }
+block= story.join("\n"); // \n creates a new line 
 }
