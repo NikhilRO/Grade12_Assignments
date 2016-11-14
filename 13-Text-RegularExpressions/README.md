@@ -5,7 +5,6 @@
 2. Words would be formatted as italics
 3. ., !, and ? characters
 
-####Resources:
-[Greedy Algorithms](https://youtu.be/c9HbsUSWilw?list=PLRqwX-V7Uu6YEypLuls7iidwHMdCM6o2w)
+#####Resources:[Greedy Algorithms](https://youtu.be/c9HbsUSWilw?list=PLRqwX-V7Uu6YEypLuls7iidwHMdCM6o2w)
                                            
 
