@@ -6,5 +6,7 @@
 3. ., !, and ? characters
 
 #####Resources:[Greedy Algorithms](https://youtu.be/c9HbsUSWilw?list=PLRqwX-V7Uu6YEypLuls7iidwHMdCM6o2w)
+               [Regex Basics](https://shiffman.github.io/A2Z-F16/week2-regex/01_regexbasics/)
+               
                                            
 
