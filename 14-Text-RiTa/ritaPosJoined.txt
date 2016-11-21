@@ -1,29 +1,3 @@
-rita-full.js:4929 [INFO] RiTaJS.version [1.1.40]
-ritaPosJoined.lenght
-undefined
-ritaPosJoined.length
-60938
-ritaPosJoined[1]
-"n"
-ritaPosJoined[2]
-"p"
-ritaPos.length
-19315
-ritaPos[0]
-"nnp"
-block[1]
-" "
-block[10]
-" "
-block[14]
-" "
-block[200]
-" "
-block[212]
-" "
-block.length
-96762
-ritaPosJoined
 "nnp
 dt
 nnp

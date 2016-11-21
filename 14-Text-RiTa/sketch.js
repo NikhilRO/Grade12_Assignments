@@ -19,10 +19,10 @@ function setup() {
   createP("Nouns: " + (ritaPosJoined.match(/\bnn\b/g).length + ritaPosJoined.match(/\bnnp\b/g).length));
   createP("Verbs: " + ritaPosJoined.match(/\bvb.*?\b/g).length);
   createP("Pronouns: " + (ritaPosJoined.match(/\bprp.*\b/g).length + ritaPosJoined.match(/\bwp.*\b/g).length));
-}
+} 
 
 /**
- * This function takes the array of text/story and converts it one big block/string. Then it applies several rita functions to get a block of Part of Speech
+ * This function takes the array of text/story and converts it into one big block/string. Then it applies several rita functions to get a string of Part of Speech
  */
 function lineToBlock() {
   block = story.join("\n"); // \n creates a new line
