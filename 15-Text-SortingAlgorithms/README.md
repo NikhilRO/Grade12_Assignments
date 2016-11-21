@@ -1,0 +1,10 @@
+# 13-Text-RegularExpressions
+
+### Create a program to use regular expression to calculate the number of 
+1. 2 digit, 3 digit, and 4 digit numbers in the document
+2. Words would be formatted as italics
+3. ., !, and ? characters
+
+#####Resources:[Greedy Algorithms](https://youtu.be/c9HbsUSWilw?list=PLRqwX-V7Uu6YEypLuls7iidwHMdCM6o2w)
+                                           
+
