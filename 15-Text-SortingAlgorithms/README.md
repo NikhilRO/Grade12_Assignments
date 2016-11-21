@@ -3,6 +3,7 @@
 ### Create a program to use sorting algorithm on a text  
 * bubbleSort() for the numbers array
 * insertionSort() for the words array
+
 After sorting your arrays, the program displays the information of both arrays in ascending order on the screen.
 
 ####Resources:
