@@ -14,7 +14,7 @@ function setup() {
   createP("Four Digit Numbers: " + block.match(/\b\d{4}\b/g).length);
 
   var italics = block.match(/\b\_.*?\_\b/g);
-  for (var i = 0; i < italics.length; i++) {
+  for (var i = 0; i < italics.length; i++) { //There might be italicized sentences which contain a lot of words
     var tempArray = split(italics[i], " ");
     for (var k = 0; k < tempArray.length; k++) {
       if (tempArray[k] !== "") {
