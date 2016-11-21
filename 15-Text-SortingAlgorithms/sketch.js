@@ -1,5 +1,5 @@
 var story = [];
-var block, ritaStory, ritaPos, pronoun, noun, verb, ritaPosJoined;
+var block, ritaStory, ritaPos, pronoun, noun, verb, ritaPosJoined, storyWords, storyNumbers;
 
 function preload() {
   story = loadStrings('rhesus.txt', lineToBlock);
@@ -27,6 +27,11 @@ function setup() {
 function lineToBlock() {
   block = story.join("\n"); // \n creates a new line
   ritaStory = RiString(block);
+  
+  storyWords = ritaStory.words();
+  
+  saveStrings(storyWords.join("\n") ,'words.txt');
+  
   ritaPos = ritaStory.pos();
   ritaPosJoined = ritaPos.join("\n");
 }
