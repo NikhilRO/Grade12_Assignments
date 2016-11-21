@@ -9,9 +9,9 @@ This program modifies [13-Text-RegularExpressions](https://github.com/NikhilRO/G
 3. ., !, and ? characters
 
 #####Resources:
-##### [Github Repository for Rita](https://github.com/dhowe/RiTaJS)
-##### [Reference](http://www.rednoise.org/rita/reference/)
-##### [Daniel Shiffman](https://www.youtube.com/watch?v=lIPEvh8HbGQ)
+* ##### [Github Repository for Rita](https://github.com/dhowe/RiTaJS)
+* ##### [Reference](http://www.rednoise.org/rita/reference/)
+* ##### [Daniel Shiffman](https://www.youtube.com/watch?v=lIPEvh8HbGQ)
 
 
 
