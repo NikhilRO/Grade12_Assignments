@@ -6,7 +6,6 @@
 3. ., !, and ? characters
 
 ####Resources:
-
 * <a href="https://youtu.be/c9HbsUSWilw?list=PLRqwX-V7Uu6YEypLuls7iidwHMdCM6o2w">Greedy Algorithms</a><br/>
 * <a href="https://shiffman.github.io/A2Z-F16/week2-regex/01_regexbasics/">Regex Basics</a>      
 * [Regex Cheatsheet](https://www.debuggex.com/cheatsheet/regex/javascript)
