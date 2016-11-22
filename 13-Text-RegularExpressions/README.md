@@ -6,11 +6,11 @@
 3. ., !, and ? characters
 
 ####Resources:
-<p style="font-size: 2px">
-<a href="https://youtu.be/c9HbsUSWilw?list=PLRqwX-V7Uu6YEypLuls7iidwHMdCM6o2w">Greedy Algorithms</a><br/>
-<a href="https://shiffman.github.io/A2Z-F16/week2-regex/01_regexbasics/">Regex Basics</a>      
+
+* <a href="https://youtu.be/c9HbsUSWilw?list=PLRqwX-V7Uu6YEypLuls7iidwHMdCM6o2w">Greedy Algorithms</a><br/>
+* <a href="https://shiffman.github.io/A2Z-F16/week2-regex/01_regexbasics/">Regex Basics</a>      
 * [Regex Cheatsheet](https://www.debuggex.com/cheatsheet/regex/javascript)
 * [p5.js - Regex Videos](https://www.youtube.com/playlist?list=PLRqwX-V7Uu6YEypLuls7iidwHMdCM6o2w)
 * [Daniel Shiffman - p5.js Regex written](http://shiffman.net/a2z/regex/)
-</p>                                           
+                                
 
