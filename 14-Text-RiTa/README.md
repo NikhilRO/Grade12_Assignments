@@ -13,5 +13,7 @@ This program modifies [13-Text-RegularExpressions](https://github.com/NikhilRO/G
 * [Reference](http://www.rednoise.org/rita/reference/)
 * [Daniel Shiffman](https://www.youtube.com/watch?v=lIPEvh8HbGQ)
 
-
+####Notes for self
+* Try `saveStrings(ritaPosJoined, "words.txt");` [example](https://github.com/NikhilRO/Grade12_Assignments/blob/e736d7d01491a3d863f63c0bd3b99516ec0a083c/15-Text-SortingAlgorithms/sketch.js#L26)
+* might need `/R/n` for regex because old typewriters need characters to be returned. 
 
