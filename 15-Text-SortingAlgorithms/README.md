@@ -11,5 +11,6 @@ After sorting your arrays, the program displays the information of both arrays i
   * [Insertion Sort (C++/Java)](http://cathyatseneca.github.io/DSAnim/web/insertion.html)
   * [Sorting Presentation](https://prezi.com/_c5eer8nslnm/sorting/)
 
-                                           
-
+### Note for self
+* By default comparison is based on strings.
+* To compare like numbers use parseInt( )
