@@ -1,49 +1,64 @@
 var story = [];
 var storyWords = [];
 var storyNumbers = [];
-var storyWordsSorted = [];
-var storyNumbersSorted = [];
-
+var time = 0;
+var number = 0;
+var img;
 
 function preload() {
   story = loadStrings('rhesus.txt', lineToWord);
+  img = loadImage("49304443.jpg");
 }
 
 function setup() {
-  noCanvas();
-  storyNumbersSorted = bubble(storyNumbers);
-  storyWordsSorted = insertionSort(storyWords);
-  
-  createP(storyWordsSorted);
+  createCanvas(600, windowHeight);
+  bubble(storyNumbers);
+  insertionSort(storyWords);
+  frameRate(30);
 }
 
 function draw() {
-
-  // createP("Two Digit Numbers: " + block.match(/\b\d{2}\b/g).length);
-  // createP("Three Digit Numbers: " + block.match(/\b\d{3}\b/g).length);
-  // createP("Four Digit Numbers: " + block.match(/\b\d{4}\b/g).length);
-
+  background(255);
+  for (var i = time; i < time + 100; i++) {
+    if (i < storyNumbers.length) {
+      text(storyNumbers[i], 100, number * 12);
+    }
+    text(storyWords[i], 500, number * 12);
+    number++;
+      if (time >= (storyWords.length - 500)) {
+    img.resize(width, height);
+    image(img, 0, 0);
+    noLoop();
+  }
+  }
+  number = 0;
+  time += 500;
 }
 
 /**
- * This function takes the array of text/story and converts it into one big block/string. Then it applies several rita functions to it.
+ * This function takes the array of text/story and extracts numbers and words from it
  */
 function lineToWord() {
   storyWords = split(story.join(" ").toLowerCase(), /[\d\W\_]+/);
   storyWords.splice(0, 1);
-  console.log(storyWords.length)
+
   storyNumbers = split(story.join(" "), /[\D\_]+/); //Convert Array to Numbers
   storyNumbers.splice(0, 1);
-  console.log(storyNumbers.length)
-    //saveStrings(storyWords, "words.txt");
+  storyNumbers.splice(storyNumbers.length - 1, 1);
+  for (var i = 0; i < storyNumbers.length; i++) {
+    storyNumbers[i] = parseInt(storyNumbers[i]);
+  }
 }
 
-
+/**
+ ** This function takes the array and uses Bubble Sort to sort it 
+ * @ param {array} array  This is the array that is sorted
+ */
 function bubble(array) {
-  var inputArray = array;
+  var inputArray = array; //THIS IS POINTING AT THE SAME MEMORY LOCATION
   for (var i = 0; i < inputArray.length - 1; i++) {
     for (var j = 0; j < inputArray.length - i - 1; j++) {
-      if (parseInt(inputArray[j]) > parseInt(inputArray[j + 1])) { 
+      if (inputArray[j] > inputArray[j + 1]) {
         var temp = inputArray[j];
         inputArray[j] = inputArray[j + 1];
         inputArray[j + 1] = temp;
@@ -53,14 +68,18 @@ function bubble(array) {
   return inputArray;
 }
 
+/**
+ * This function takes the array and uses Insertion Sort to sort it 
+ * @ param {array} array  This is the array that is sorted
+ */
 function insertionSort(array) {
   var inputArray = array;
   for (var i = 0; i < inputArray.length; i++) {
     var current = inputArray[i];
-    for (var j = i;j > 0 && inputArray[j-1]> current; j--){
-      inputArray[j]= inputArray[j-1];
+    for (var j = i; j > 0 && inputArray[j - 1] > current; j--) {
+      inputArray[j] = inputArray[j - 1];
     }
-    inputArray[j]= current;
+    inputArray[j] = current;
   }
   return inputArray;
 }
