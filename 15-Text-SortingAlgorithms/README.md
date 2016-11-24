@@ -17,3 +17,5 @@ After sorting your arrays, the program displays the information of both arrays i
 
 * `split()` using regex creates an element at the start and the end that is empty. WHY?
 *  So, remove them using `splice()` 
+
+* Arrays like objects will point to the same memory location; so, to do a operation on an array and get a new array without changing the original array, you need to copy each element of the array into a temporary array.
