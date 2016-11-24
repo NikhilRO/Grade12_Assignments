@@ -25,11 +25,11 @@ function draw() {
     }
     text(storyWords[i], 500, number * 12);
     number++;
-      if (time >= (storyWords.length - 500)) {
-    img.resize(width, height);
-    image(img, 0, 0);
-    noLoop();
-  }
+    if (i >= (storyWords.length)) {
+      img.resize(width, height);
+      image(img, 0, 0);
+      noLoop();
+    }
   }
   number = 0;
   time += 500;
