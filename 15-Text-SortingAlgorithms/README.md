@@ -12,5 +12,8 @@ After sorting your arrays, the program displays the information of both arrays i
   * [Sorting Presentation](https://prezi.com/_c5eer8nslnm/sorting/)
 
 ### Note for self
-* By default comparison is based on strings.
-* To compare like numbers use parseInt( )
+* By default comparison is based on strings because regex gives you strings for everything.
+* To compare like numbers use parseInt( ) to convert all Array elements to numbers
+
+* `split()` using regex creates an element at the start and the end that is empty. WHY?
+*  So, remove them using `splice()` 
