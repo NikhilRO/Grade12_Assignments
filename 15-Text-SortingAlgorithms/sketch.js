@@ -14,25 +14,24 @@ function setup() {
   createCanvas(600, windowHeight);
   bubble(storyNumbers);
   insertionSort(storyWords);
-  frameRate(30);
 }
 
 function draw() {
   background(255);
-  for (var i = time; i < time + 100; i++) {
+  for (var i = time; i < time + (height/12)+ 5; i++) {
     if (i < storyNumbers.length) {
       text(storyNumbers[i], 100, number * 12);
     }
     text(storyWords[i], 500, number * 12);
     number++;
-    if (i >= (storyWords.length)) {
+    if (i >= (storyWords.length)-60) {
       img.resize(width, height);
       image(img, 0, 0);
       noLoop();
     }
   }
   number = 0;
-  time += 500;
+  time += 10;
 }
 
 /**
@@ -42,11 +41,11 @@ function lineToWord() {
   storyWords = split(story.join(" ").toLowerCase(), /[\d\W\_]+/);
   storyWords.splice(0, 1);
 
-  storyNumbers = split(story.join(" "), /[\D\_]+/); //Convert Array to Numbers
+  storyNumbers = split(story.join(" "), /[\D\_]+/); 
   storyNumbers.splice(0, 1);
   storyNumbers.splice(storyNumbers.length - 1, 1);
   for (var i = 0; i < storyNumbers.length; i++) {
-    storyNumbers[i] = parseInt(storyNumbers[i]);
+    storyNumbers[i] = parseInt(storyNumbers[i]);//Converts strings to Numbers
   }
 }
 
