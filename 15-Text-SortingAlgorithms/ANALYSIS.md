@@ -13,7 +13,7 @@
       2. Bubble Sort Time: 7939.974 milliseconds
       3. In-built function: 30.723 milliseconds
       
-      Efficiency: `.sort()` took around 92 times less time than insertion sort to sort 15730 words; andover 250 times less time than bubble sort. 
+      Efficiency: `.sort()` took around 92 times less time than insertion sort to sort 15730 words; and over 250 times less time than bubble sort. 
       
       Reasons: Insertion sort is more efficient than bubble sort because it reduces the redundant comparisons in bubble sort by putting the element at its current correct location. But it still has a lot of comparisons; therefore, it is not as efficient as `.sort()` 
       
