@@ -3,7 +3,7 @@ var storyWords = [];
 var storyNumbers = [];
 var time = 0;
 var number = 0;
-var img;
+var img, timeTakenBubble, timeTakenInsertion;
 
 function preload() {
   story = loadStrings('rhesus.txt', lineToWord);
@@ -14,17 +14,29 @@ function setup() {
   createCanvas(600, windowHeight);
   bubble(storyNumbers);
   insertionSort(storyWords);
+  console.log("Bubble Sort Time: "+ timeTakenBubble+ " And Insertion Sort Time: "+ timeTakenInsertion);
+  
+  //USING IN-BUILT FUNCTION
+  // var timeStart= millis();
+  // storyNumbers.sort()//function(a, b){return a-b}); //BY DEFAULT COMPARISON IS BASED ON STRINGS NOT NUMBERS
+  // var timeEnds = millis();
+  // console.log("Time for numbers: "+ (timeEnds-timeStart));
+  
+  // timeStart=millis();
+  // storyWords.sort();
+  // timeEnds = millis();
+  // console.log("Time for words: "+ (timeEnds-timeStart));
 }
 
 function draw() {
   background(255);
-  for (var i = time; i < time + (height/12)+ 5; i++) {
+  for (var i = time; i < time + (height / 12) + 5; i++) {
     if (i < storyNumbers.length) {
       text(storyNumbers[i], 100, number * 12);
     }
     text(storyWords[i], 500, number * 12);
     number++;
-    if (i >= (storyWords.length)-60) {
+    if (i >= (storyWords.length) - 60) {
       img.resize(width, height);
       image(img, 0, 0);
       noLoop();
@@ -41,11 +53,11 @@ function lineToWord() {
   storyWords = split(story.join(" ").toLowerCase(), /[\d\W\_]+/);
   storyWords.splice(0, 1);
 
-  storyNumbers = split(story.join(" "), /[\D\_]+/); 
+  storyNumbers = split(story.join(" "), /[\D\_]+/);
   storyNumbers.splice(0, 1);
   storyNumbers.splice(storyNumbers.length - 1, 1);
   for (var i = 0; i < storyNumbers.length; i++) {
-    storyNumbers[i] = parseInt(storyNumbers[i]);//Converts strings to Numbers
+    storyNumbers[i] = parseInt(storyNumbers[i]); //Converts strings to Numbers
   }
 }
 
@@ -55,6 +67,7 @@ function lineToWord() {
  */
 function bubble(array) {
   var inputArray = array; //THIS IS POINTING AT THE SAME MEMORY LOCATION
+  var timeStart = millis();
   for (var i = 0; i < inputArray.length - 1; i++) {
     for (var j = 0; j < inputArray.length - i - 1; j++) {
       if (inputArray[j] > inputArray[j + 1]) {
@@ -64,6 +77,8 @@ function bubble(array) {
       }
     }
   }
+  var timeEnds = millis();
+  timeTakenBubble = timeEnds - timeStart;
   return inputArray;
 }
 
@@ -73,6 +88,7 @@ function bubble(array) {
  */
 function insertionSort(array) {
   var inputArray = array;
+  var timeStart = millis();
   for (var i = 0; i < inputArray.length; i++) {
     var current = inputArray[i];
     for (var j = i; j > 0 && inputArray[j - 1] > current; j--) {
@@ -80,5 +96,7 @@ function insertionSort(array) {
     }
     inputArray[j] = current;
   }
+  var timeEnds = millis();
+  timeTakenInsertion = timeEnds - timeStart;
   return inputArray;
 }
