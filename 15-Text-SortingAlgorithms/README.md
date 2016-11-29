@@ -13,7 +13,8 @@ After sorting the arrays, the program displays the information of both arrays in
 
 ### Note for self
 * By default comparison is based on strings because regex gives you strings for everything.
-* To compare like numbers use parseInt( ) to convert all Array elements to numbers
+* To compare with numbers use parseInt( ) to convert all Array elements to numbers. 
+* But there still a issue [`.sort()`](http://www.w3schools.com/jsref/jsref_sort.asp) compares everything as a string. You need parameter for number comparsion
 
 * `split()` using regex creates an element at the start and the end that is empty. WHY?
 *  So, remove them using `splice()` 
