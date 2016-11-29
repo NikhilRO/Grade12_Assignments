@@ -13,12 +13,10 @@ After sorting the arrays, the program displays the information of both arrays in
 
 ### Note for self
 * By default comparison is based on strings because regex gives you strings for everything.
-* To compare with numbers use parseInt( ) to convert all Array elements to numbers. 
-* But there still a issue [`.sort()`](http://www.w3schools.com/jsref/jsref_sort.asp) compares everything as a string. You need parameter for number comparsion
-
+   1. To compare with numbers use parseInt( ) to convert all Array elements to numbers. 
+   2. But there still a issue [`.sort()`](http://www.w3schools.com/jsref/jsref_sort.asp) compares everything as a string. You need parameter for number comparsion
 
 * `split()` using regex creates an element at the start and the end that is empty. WHY?
-*  So, remove them using `splice()` 
-
+   1.  So, remove them using `splice()` 
 
 * Arrays like objects will point to the same memory location; so, to do a operation on an array and get a new array without changing the original array, you need to copy each element of the array into a temporary array.
