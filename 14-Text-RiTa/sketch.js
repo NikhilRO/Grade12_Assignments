@@ -31,7 +31,7 @@ function lineToBlock() {
 //Calculate how many pronouns, nouns (non-plural), and verbs exist.
 
 /*
- prp	Personal pronoun
+  prp	Personal pronoun
  	prp$	Possessive pronoun
   wp	Wh-pronoun
  	wp$	Possessive wh-pronoun
