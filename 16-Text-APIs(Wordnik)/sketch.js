@@ -16,7 +16,7 @@ function preload() {
     var tempRelatedWord= loadJSON(urlStart + englishWords[i] + urlRelatedWords + apiKey);
     var tempPhrases= loadJSON(urlStart + englishWords[i] + urlPhrases + apiKey);
     var tempDefinitions= loadJSON(urlStart + englishWords[i] + urlDefinitions + apiKey);
-    words.push(new Word(englishWords[i], tempRelatedWord, tempPhrases,tempDefinitions))
+    words.push(new Word(englishWords[i], tempRelatedWord, tempPhrases,tempDefinitions));
   }
 }
 
