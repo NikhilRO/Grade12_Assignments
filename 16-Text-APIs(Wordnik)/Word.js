@@ -1,3 +1,13 @@
+/**
+ * This class/object represents individual flames in the scene of the fireworks.
+ * @class
+ * @constructor
+ * @param {object}  endLocation        The vector location where the flame will end up
+ * @param {object}  location           The vector location of the flame
+ * @param {number}  radius             The radius of the flame 
+ * @param {object}  moveVector         The vector velocity of the flame
+ * @param {boolean} attracted          The boolean value to tell the flame if it is attracted to a location. 
+ */
 function Word(word, relatedWords, phrases, definitions) {
   this.word = word;
   this.definitions = definitions;
@@ -5,6 +15,9 @@ function Word(word, relatedWords, phrases, definitions) {
   this.phrases = phrases;
   this.giantArray = [];
 
+  /**
+   * Displays the flame on the screen and controls the "sparkles" emanated/emitted by the flame 
+   */
   this.extractUseful = function() {
     var tempSplice = this.relatedWords.length;
     for (var i = 0; i < tempSplice; i++) {
@@ -26,7 +39,10 @@ function Word(word, relatedWords, phrases, definitions) {
     }
     this.definitions.splice(0, tempSplice);
   }
-
+  
+  /**
+   * Displays the flame on the screen and controls the "sparkles" emanated/emitted by the flame 
+   */
   this.toChar = function() {
     this.relatedWords = split(this.relatedWords.join(" ").toLowerCase(), /[\d\W\_]+/);
     this.phrases = split(this.phrases.join(" ").toLowerCase(), /[\d\W\_]+/);
@@ -37,6 +53,9 @@ function Word(word, relatedWords, phrases, definitions) {
     this.definitions = split(this.definitions.join(""), "");
   }
 
+  /**
+   * Displays the flame on the screen and controls the "sparkles" emanated/emitted by the flame 
+   */
   this.display = function(centerX, centerY) {
     this.giantArray = this.relatedWords.concat(this.phrases.concat(this.definitions));
 
