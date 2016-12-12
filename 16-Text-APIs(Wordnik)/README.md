@@ -9,4 +9,4 @@
 * [loadJSON()](https://p5js.org/reference/#/p5/loadJSON)
 
 ### Note for self
-* Try to  rotatethe text along the path. 
+* Try to  rotate the text along the path. 
