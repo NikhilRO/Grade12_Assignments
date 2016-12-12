@@ -1,5 +1,5 @@
-# 16-Text-APIs(Wordnik)
-
+## 16-Text-APIs(Wordnik)
+---------------------
 ### Create a program to use Wordnik API on ten words and retrieve their definitions, related words, and phrases. Once you the retrieval is done, create a visualization on either the individual characters, or on a numeric value.
 
 ####Resources:
@@ -9,4 +9,4 @@
 * [loadJSON()](https://p5js.org/reference/#/p5/loadJSON)
 
 ### Note for self
-* Try to rotate the text along the path. 
+* Try to  rotatethe text along the path. 
