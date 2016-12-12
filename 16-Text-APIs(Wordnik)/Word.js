@@ -1,12 +1,11 @@
 /**
- * This class/object represents individual flames in the scene of the fireworks.
+ * This class/object contains words, and their phrases, definitions, and related words. 
  * @class
  * @constructor
- * @param {object}  endLocation        The vector location where the flame will end up
- * @param {object}  location           The vector location of the flame
- * @param {number}  radius             The radius of the flame 
- * @param {object}  moveVector         The vector velocity of the flame
- * @param {boolean} attracted          The boolean value to tell the flame if it is attracted to a location. 
+ * @param {string}  word              The word that we are interested in
+ * @param {array}   relatedWords      This array contains the words that are related to our word of concern
+ * @param {array}   phrases           This array contains the phrases that are related to our word of concern
+ * @param {array}   definitons        This array contains the defintion that are related to our word of concern
  */
 function Word(word, relatedWords, phrases, definitions) {
   this.word = word;
@@ -16,7 +15,7 @@ function Word(word, relatedWords, phrases, definitions) {
   this.giantArray = [];
 
   /**
-   * Displays the flame on the screen and controls the "sparkles" emanated/emitted by the flame 
+   * Our API call from Wordnik gives us a ton of information but some information is redundant for us. This function extracts whatever information is useful to us.
    */
   this.extractUseful = function() {
     var tempSplice = this.relatedWords.length;
@@ -39,12 +38,12 @@ function Word(word, relatedWords, phrases, definitions) {
     }
     this.definitions.splice(0, tempSplice);
   }
-  
+
   /**
-   * Displays the flame on the screen and controls the "sparkles" emanated/emitted by the flame 
+   * This function takes the array converts it to a string and then divides into individual characters
    */
   this.toChar = function() {
-    this.relatedWords = split(this.relatedWords.join(" ").toLowerCase(), /[\d\W\_]+/);
+    this.relatedWords = split(this.relatedWords.join(" ").toLowerCase(), /[\d\W\_]+/); //Getting rid of digits and anything not a letter
     this.phrases = split(this.phrases.join(" ").toLowerCase(), /[\d\W\_]+/);
     this.definitions = split(this.definitions.join(" ").toLowerCase(), /[\d\W\_]+/);
 
@@ -54,7 +53,9 @@ function Word(word, relatedWords, phrases, definitions) {
   }
 
   /**
-   * Displays the flame on the screen and controls the "sparkles" emanated/emitted by the flame 
+   * Displays the characters on the screen
+   * @param {float} centerX    Gives the x location of the center of the circle that displays the text
+   * @param {float} centerY    Gives the y location of the center of the circle that displays the text
    */
   this.display = function(centerX, centerY) {
     this.giantArray = this.relatedWords.concat(this.phrases.concat(this.definitions));
@@ -66,7 +67,7 @@ function Word(word, relatedWords, phrases, definitions) {
     translate(centerX, centerY);
     for (var i = 0; i < this.giantArray.length; i++) {
       text(this.giantArray[i], (radius * Math.cos(radians(angle))), (radius * Math.sin(radians(angle))));
-      angle  +=  5;
+      angle += 5;
       radius += .15;
     }
     pop();
