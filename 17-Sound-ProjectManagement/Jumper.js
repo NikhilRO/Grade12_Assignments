@@ -1,15 +1,16 @@
 function Jumper(location) {
   this.location = location;
-  //this.colour = definitions;
   this.gravity = createVector(0, .098);
   this.velocity = createVector(0, -8);
   this.inContact = false;
 
   this.move = function() {
     this.velocity.add(this.gravity);
-    //if (this.contact) { //JUMPs
-//this.velocity.y -= 8;
-    //}
+    if (this.inContact){ //&& (abs(this.timeStart-millis) > 100)) { //JUMPs
+      this.velocity.y -= 8;
+      console.log("happening");
+      this.inContact= false;
+    }
     this.location.add(this.velocity);
   }
 
@@ -25,6 +26,6 @@ function Jumper(location) {
   }
 
   this.contact = function() {
-    this.inContact
+    this.inContact = true;
   }
 }

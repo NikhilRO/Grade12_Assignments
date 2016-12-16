@@ -21,10 +21,13 @@ function Block(location) {
     }
   }
   this.moveIt = function() {
-    this.movement = !this.movement;
+    this.movement = true;
+  }
+  this.stopMove= function(){
+    this.movement= false;
   }
 
   this.checkEdges = function() {
-    return this.location.x >= height;
+    return (this.location.y >= height);
   }
 }

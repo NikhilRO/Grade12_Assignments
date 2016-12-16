@@ -13,15 +13,14 @@ function setup() {
   gameStart = true;
   numberUsed = 0;
   jumper = new Jumper(createVector(width / 2, height * (9 / 10)));
-  for (var i = 7; i >= 0; i--) {
+  for (var i = 7; i >= -1; i--) {
     blocks.push(new Block(createVector(random(width), i * height / 8)));
   }
   song.play();
-
 }
 
 function draw() {
-  ampHistory.push(map(amp.getLevel(), 0, 1, 0, width));
+  ampHistory.push(map(100*amp.getLevel(), 0, 100, 0, width));
   background(255);
   if (gameStart && !gameOver) {
     game();
@@ -30,17 +29,27 @@ function draw() {
 }
 
 function game() {
-  for (var j = 0; j < blocks.length; j++) {
-    if (blocks[j].checkEdges()) {
-      blocks.splice(j, 1);
-      blocks.push(new Block(createVector(ampHistory[numberUsed], height / 8)));
-      numberUsed++;
-    }
-  }
-
   for (var i = 0; i < blocks.length; i++) {
     blocks[i].display()
     blocks[i].move();
+    if (jumper.location.y <= height / 2 + height / 16) {
+      blocks[i].moveIt();
+    }
+    if (jumper.location.y >= height / 2 + height / 8) {
+      blocks[i].stopMove();
+    }
+    // if (blocks[i].checkEdges()) {
+    //   blocks.splice(i, 1);
+    //   blocks.push(new Block(createVector(ampHistory[numberUsed], height / 8)));
+    //   numberUsed++;
+    // }
+  }
+
+  if (blocks[0].checkEdges()) {
+    blocks.splice(0, 1);
+    blocks.push(new Block(createVector(ampHistory[numberUsed], -height / 8)));
+    console.log(ampHistory[numberUsed]);
+    numberUsed += 10;
   }
 
   jumper.display();
@@ -54,18 +63,20 @@ function game() {
 }
 
 function jumperTouchBlock() {
-  for (var j = 0; j < blocks.length; j++) {
-    if (jumper.location.dist(blocks[j].location) < 50) {
-      jumper.contact();
+  if (jumper.velocity.y >= 0) {
+    for (var j = 0; j < blocks.length; j++) {
+      if (jumper.location.dist(blocks[j].location) < 50) {
+        jumper.contact();
+
+      }
     }
   }
-  if(keyIsDown(LEFT_ARROW)){
+  if (keyIsDown(LEFT_ARROW)) {
     jumper.location.x -= 10;
   }
-  if(keyIsDown(RIGHT_ARROW)){
+  if (keyIsDown(RIGHT_ARROW)) {
     jumper.location.x += 10;
   }
-  
 }
 
 // function keyPressed() {
