@@ -8,7 +8,8 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  var cnv = createCanvas(windowWidth / 2, windowHeight);
+  cnv.position(width / 2, 0);
   gameOver = false;
   gameStart = true;
   numberUsed = 0;
@@ -20,7 +21,7 @@ function setup() {
 }
 
 function draw() {
-  ampHistory.push(map(100*amp.getLevel(), 0, 100, 0, width));
+  ampHistory.push(map(amp.getLevel(), 0, 0.1, 0, width)); //(Math.log(amp.getLevel()), Math.log(.00001), 0, 0, width)); //(Math.pow(2, 100 * amp.getLevel())
   background(255);
   if (gameStart && !gameOver) {
     game();
@@ -49,7 +50,10 @@ function game() {
     blocks.splice(0, 1);
     blocks.push(new Block(createVector(ampHistory[numberUsed], -height / 8)));
     console.log(ampHistory[numberUsed]);
-    numberUsed += 10;
+    numberUsed += 20;
+    if(numberUsed>950){
+      numberUsed=0;
+    }
   }
 
   jumper.display();
@@ -67,9 +71,17 @@ function jumperTouchBlock() {
     for (var j = 0; j < blocks.length; j++) {
       if (jumper.location.dist(blocks[j].location) < 50) {
         jumper.contact();
-
       }
     }
+  }
+  if (jumper.location.y <= height / 2 - height / 3) {
+    jumper.location.y += 4;
+  }
+  if (jumper.location.x > width) {
+    jumper.location.x = 0;
+  }
+  if (jumper.location.x < 0) {
+    jumper.location.x = width;
   }
   if (keyIsDown(LEFT_ARROW)) {
     jumper.location.x -= 10;

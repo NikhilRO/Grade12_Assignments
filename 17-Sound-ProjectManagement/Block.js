@@ -1,7 +1,7 @@
 function Block(location) {
   this.location = location;
   //this.color = definitions;
-  this.velocity = createVector(0, .98);
+  this.velocity = createVector(0, 9.8);
   this.movement = false;
 
   /**
