@@ -1,3 +1,10 @@
+/**
+ * This class/object represents the jumper which jumps on the blocks.
+ * @class
+ * @constructor
+ * @param {vector object}  location        The vector location of the jumper
+ * @param {image }         person          The image to represent the jumper
+ */
 function Jumper(location, person) {
   this.location = location;
   this.gravity = createVector(0, .098);
@@ -7,6 +14,9 @@ function Jumper(location, person) {
   this.movingDown = true;
   this.person = person;
 
+  /**
+   * Moves the block on the screen
+   */
   this.move = function() {
     if (this.movingUp) {
       this.velocity.add(this.gravity);
@@ -28,9 +38,7 @@ function Jumper(location, person) {
   }
 
   /**
-   * Displays the characters on the screen
-   * @param {float} centerX    Gives the x location of the center of the circle that displays the text
-   * @param {float} centerY    Gives the y location of the center of the circle that displays the text
+   * Displays the jumper on the screen
    */
   this.display = function() {
     // stroke(255, 0, 0);
@@ -40,6 +48,9 @@ function Jumper(location, person) {
     image(this.person, this.location.x, this.location.y);
   }
 
+  /**
+   * helps to determine if the jumper contacted the block leading to a jump
+   */
   this.contact = function() {
     if (this.movingDown) {
       this.movingUp = true;

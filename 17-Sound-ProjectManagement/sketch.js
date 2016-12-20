@@ -1,3 +1,7 @@
+//How to put text on html
+//why are distances wrong?
+//problem with the endScreen
+
 var amp, gameStart, gameOver, numberUsed, jumper;
 var ampHistory = [];
 var blocks = [];
@@ -33,7 +37,6 @@ function setup() {
     blocks.push(new Block(createVector(random(width), i * height / 8), bubblegum));
   }
 
-
   song.loop();
 }
 
@@ -49,9 +52,11 @@ function draw() {
   if (!gameStart && gameOver) {
     endScreen();
   }
-
 }
 
+/**
+ * Runs the actual game 
+ */
 function game() {
   for (var i = 0; i < blocks.length; i++) {
     blocks[i].display()
@@ -100,12 +105,18 @@ function game() {
 
 }
 
+/**
+ * While the game is running, this controls the scrolling part behind the game (i.e moving the blocks)
+ */
 function moveBackground() {
   for (var j = 0; j < blocks.length; j++) {
     blocks[j].moveIt();
   }
 }
 
+/**
+ * While the game is running, this controls the movements of the jumper
+ */
 function jumperMovements() {
   //for (var j = 0; j < blocks.length; j++) {}
   jumper.display();
@@ -128,8 +139,9 @@ function jumperMovements() {
   }
 }
 
-
-
+/**
+ * While the game is running, this collects the points and tallys the score
+ */
 function collect() {
   for (var i = 0; i < blocks.length; i++) {
     var distance = jumper.location.dist(blocks[i].location);
@@ -161,6 +173,9 @@ function keyTyped() {
   }
 }
 
+/**
+ * Used to restart the game/ initialize the game
+ */
 function restart() {
   blocks.splice(0, blocks.length);
 
@@ -178,17 +193,23 @@ function restart() {
   song.loop();
 }
 
+/**
+ * When the game is done, this is displayed
+ */
 function endScreen() {
   gameOverDisplay();
 
   fade += 2;
-  fill(200, 255 - fade);;
+  fill(200, 255 - fade);
   strokeWeight(100);
   textSize(100);
   text("Score:" + score, width / 2, height / 2 - height / 4);
   noFill();
 }
 
+/**
+ * When the game is done, this is displayed
+ */
 function gameOverDisplay() { //restart button
   push();
 
