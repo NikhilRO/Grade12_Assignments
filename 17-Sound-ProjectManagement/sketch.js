@@ -15,11 +15,11 @@ function preload() {
 }
 
 function setup() {
-  println("Use arrow keys to control the jumper");
-  println("Press R or r to restart the game");
-  println("Collect stars to increase your score");
+  createP("Use arrow keys to control the jumper");
+  createP("Press R or r to restart the game");
+  createP("Collect stars to increase your score");
 
-  var cnv = createCanvas(windowWidth / 2, windowHeight);
+  var cnv = createCanvas(600,600);//(windowWidth / 2, windowHeight);
   cnv.position(width / 2, 0);
 
   bubblegum.resize(width / 5, height / 14);
@@ -34,7 +34,7 @@ function setup() {
 
   jumper = new Jumper(createVector(width / 2, height * (9 / 10)), person);
   for (var i = 7; i >= -1; i--) {
-    blocks.push(new Block(createVector(random(width), i * height / 8), bubblegum));
+    blocks.push(new Block(createVector(random(width), i * height / 8.00), bubblegum));
   }
 
   song.loop();
@@ -62,13 +62,6 @@ function game() {
     blocks[i].display()
     blocks[i].move();
 
-    if (jumper.location.y <= height / 2 - height / 8) {
-      blocks[i].moveIt();
-    }
-    if (jumper.location.y >= height / 2 + height / 128) {
-      blocks[i].stopMove();
-    }
-
     // if (blocks[i].checkEdges()) {
     //   blocks.splice(i, 1);
     //   blocks.push(new Block(createVector(ampHistory[numberUsed], height / 8)));
@@ -77,17 +70,30 @@ function game() {
 
     var distance = jumper.location.dist(blocks[i].location);
     if (distance < 50) {
-      console.log(distance);
+      //console.log(distance);
       if (jumper.contact()) {
         moveBackground();
       }
     }
   }
 
+  if (jumper.location.y <= height / 2 - height / 8) {
+    for (var j = 0; j < blocks.length; j++) {
+      blocks[j].moveIt();
+    }
+  }
+  if (jumper.location.y >= height / 2 + height / 128) {
+    for (var k = 0; k < blocks.length; k++) {
+      blocks[k].stopMove();
+    }
+  }
+
+
   if (blocks[0].checkEdges()) {
     blocks.splice(0, 1);
-    blocks.push(new Block(createVector(ampHistory[numberUsed] || random(width), -height / 8), bubblegum));
+    blocks.push(new Block(createVector(ampHistory[numberUsed] || random(width), -height / 8.00), bubblegum));
     //console.log(ampHistory[numberUsed] || random(width));
+    console.log(-height / 8.00);
     numberUsed += floor(random(10, 30));
     if (numberUsed > 950) {
       numberUsed = 0;
@@ -211,6 +217,7 @@ function endScreen() {
  * When the game is done, this is displayed
  */
 function gameOverDisplay() { //restart button
+  strokeWeight(10);
   push();
 
   fill(50);

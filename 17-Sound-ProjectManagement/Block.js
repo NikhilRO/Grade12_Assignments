@@ -6,7 +6,7 @@
  * @param {image }         person          The image to represent the block
  */
 function Block(location, bubblegum) {
-  this.location = location;
+  this.location = location.copy();
   this.velocity = createVector(0, 9.8);
   this.movement = false;
   this.bubblegum = bubblegum;
