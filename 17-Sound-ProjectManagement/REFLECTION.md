@@ -18,3 +18,5 @@ A big part of the assignment was planning your project and planning it in a way 
 ​	The mechanics of the game are simple enough if you can work with arrays and objects. The only real challenge is getting the scrolling right. I think I failed at that (70 percent). Last year, the scrolling was a challenge in culminating too, but I had lots of time to try thousands of combination to see which one worked best. I just couldn't afford to do that. One week. 
 
 ​	Going back to the purpose of the project, delivering a product that suits your customer, I think succeeded partially at that. My failure is not getting the project done on time. Also, the bugs like scrolling. To be fair, when it comes to bugs, in real life, there is alpha and then beta testing. We didn't get that opportunity (maybe, future classes?). 
+
+​	To conclude, the reason I am disappointed is that I couldn't deliver that perfect project that I could. 
