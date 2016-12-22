@@ -1,11 +1,7 @@
 //HOW TO WORK WITH MULTIPLE CANVAS?
 
-var capture, cnv;
+var capture, cnv, whatRedToLookFor;
 var videoPixel = [];
-// var pixR = [];
-// var pixG = [];
-// var pixB = [];
-// var pixA = [];
 
 function preload() {
   capture = createCapture(VIDEO);
@@ -13,8 +9,8 @@ function preload() {
 }
 
 function setup() {
-  cnv = createCanvas(320, 240);
-  //sortedVideo = createCanvas(32, 24);
+  cnv = createCanvas(650, 240);
+  whatRedToLookFor = 150;
 
   //capture.hide();   //hides the video feed
   //pixelDensity(1);  //used for retina displays to compensate
@@ -26,121 +22,130 @@ function draw() {
   capture.size(32, 24);
   capture.loadPixels();
 
-  if (millis() > 5000) {
-    videoPixel.splice(0, videoPixel.length);
-    for (var x = 0; x < capture.width; x++) {
-      for (var y = 0; y < capture.height; y++) {
-        if (!(capture.get(x, y) instanceof p5.Image)) {
-          videoPixel.push(new PixelDot(capture.get(x, y)[0],
-            capture.get(x, y)[1],
-            capture.get(x, y)[2],
-            capture.get(x, y)[3]));
-          var tempColor = videoPixel[videoPixel.length - 1].returnColor();
-          if (red(tempColor) > 150) { //Linear Search
-            fill(0, 0, 255);
-          } else {
-            fill(tempColor);
-          }
-          ellipse(x * 10, y * 10, 8, 8);
+  videoPixel.splice(0, videoPixel.length);
+  for (var x = 0; x < capture.width; x++) {
+    for (var y = 0; y < capture.height; y++) {
+      if (!(capture.get(x, y) instanceof p5.Image)) {
+        videoPixel.push(new PixelDot(capture.get(x, y)[0],
+          capture.get(x, y)[1],
+          capture.get(x, y)[2],
+          capture.get(x, y)[3]));
+        var tempColor = videoPixel[videoPixel.length - 1].returnColor();
+        if (red(tempColor) === wha * tRedToLookFor) { //Linear Search
+          fill(255);
+          strokeWeight(8);
+          stroke(255);
+        } else {
+          fill(tempColor);
+        }
+        ellipse(x * 10 + 330, y * 10, 8, 8);
+        noStroke();
+        strokeWeight(1);
+      }
+    }
+  }
+
+  if (videoPixel) {
+    videoPixel.sort(function(a, b) {
+      return a.red - b.red;
+    });
+
+    var tempArray = [];
+    for (var n = 0; n < videoPixel.length; n++) {
+      tempArray.push(videoPixel[n].red);
+    }
+
+    var tempNumber = binarySearch(tempArray, whatRedToLookFor);
+    console.log(tempNumber);
+
+    for (var k = 0; k < 32; k++) {
+      for (var l = 0; l < 24; l++) {
+        var index = (k + (l * 24));
+        //stroke(0);
+        if (index != tempNumber) {
+          fill(videoPixel[index].returnColor());
+          // fill(videoPixel[index].red,//
+          //   videoPixel[index].green,
+          //   videoPixel[index].blue,
+          //   videoPixel[index].alpha);
+          ellipse(k * 10, l * 10, 8, 8);
+        } else {
+          fill(255);
+          ellipse(k * 10, l * 10, 16, 16);
         }
       }
     }
-
-    if (videoPixel) {
-      videoPixel.sort(function(a, b) {
-        return a.red - b.red;
-      });
-
-
-      //IS IT POSSIBLE THAT IT GOES TO THIS BEFORE COMPLETEING above
-      //   for (var k = 0; k < 32; k++) {
-      //     for (var l = 0; l < 24; l++) {
-      //       var index = (k + (l * width));
-      //       //stroke(0);
-      //       fill(videoPixel[index].returnColor());
-      //       // fill(videoPixel[index].red,//
-      //       //   videoPixel[index].green,
-      //       //   videoPixel[index].blue,
-      //       //   videoPixel[index].alpha);
-      //       ellipse(x * 10, y * 10, 8, 8);
-      //     }
-      //   }
-      // 
-      //console.log(videoPixel);
-      //noLoop();
-
-
-      //   var tempArray = [];
-      //   for (var n = 0; n <= videoPixel.length; n++) {
-      //     tempArray.push(videoPixel[n].returnColor());
-      //   }
-      //   binarySearch(tempArray, color(150, 150, 150));
-      // 
-    }
   }
-  //WHY IS THIS NOT WORKING
-  // videoPixel.splice(0, videoPixel.length);
-  // videoPixel.push.apply(videoPixel, capture.pixels);
-  // videoPixel.sort(function(a, b) {
-  //   return a - b
-  // });
-
-  // for (var x = 0; x < 32; x++) {
-  //   for (var y = 0; y < 24; y++) {
-  //     var index = (x + y * width) * 4;
-  //     //stroke(0);
-  //     fill(videoPixel[index + 0],
-  //       videoPixel[index + 1],
-  //       videoPixel[index + 2],
-  //       videoPixel[index + 3]);
-  //     ellipse(x * 10, y * 10, 8, 8);
-  //   }
-  // }
 }
 
 
-function compare(a, b) { //sorts based on red //Actually you don't need this for numbers //This is good for strings
-  if (a.red < b.red)
-    return -1;
-  if (a.red > b.red)
-    return 1;
-  return 0;
-}
 
+/**
+ * This function takes the array and uses Binary search on it
+ * @param  {array}  arr  This is the array to be searched
+ * @param  {number} i    This is what we are looking for
+ * @return {number}      The index which matches x or -1 if no match
+ */
 function binarySearch(arr, i) {
   var mid = Math.floor(arr.length / 2);
-  console.log(arr[mid], i);
+  //console.log(arr[mid], i);
 
   if (arr[mid] === i) {
-    console.log('match', arr[mid], i);
-    return arr[mid];
+    //console.log('match', arr[mid], i);
+    return mid;
   } else if (arr[mid] < i && arr.length > 1) {
-    console.log('mid lower', arr[mid], i);
+    //console.log('mid lower', arr[mid], i);
     return binarySearch(arr.splice(mid, Number.MAX_VALUE), i);
   } else if (arr[mid] > i && arr.length > 1) {
-    console.log('mid higher', arr[mid], i);
+    //console.log('mid higher', arr[mid], i);
     return binarySearch(arr.splice(0, mid), i);
   } else {
-    console.log('not here', i);
+    //console.log('not here', i);
     return -1;
   }
-
 }
 
-function linearSearch(array, x){
-  var tempArray;
-  for(var i= 0; i< array.length; i++){
-    if(array[i] === x){
-      tempArray.push(i);
+/**
+ * This function takes the array and uses Linear search 
+ * @param  {array}  array  This is the array to be searched
+ * @param  {number} x      This is what we are looking for
+ * @return {number}        The index which matches x or -1 if no match
+ */
+function linearSearch(array, x) {
+  for (var i = 0; i < array.length; i++) {
+    if (array[i] === x) {
+      return i;
     }
   }
-  return tempArray;
+  return -1;
 }
 
+//WHY IS THIS NOT WORKING
+// videoPixel.splice(0, videoPixel.length);
+// videoPixel.push.apply(videoPixel, capture.pixels);
+// videoPixel.sort(function(a, b) {
+//   return a - b
+// });
 
-function keyPressed() {
-  noLoop();
-}
+// for (var x = 0; x < 32; x++) {
+//   for (var y = 0; y < 24; y++) {
+//     var index = (x + y * width) * 4;
+//     //stroke(0);
+//     fill(videoPixel[index + 0],
+//       videoPixel[index + 1],
+//       videoPixel[index + 2],
+//       videoPixel[index + 3]);
+//     ellipse(x * 10, y * 10, 8, 8);
+//   }
+// }
+
+// function compare(a, b) { //sorts based on red //Actually you don't need this for numbers //This is good for strings
+//   if (a.red < b.red)
+//     return -1;
+//   if (a.red > b.red)
+//     return 1;
+//   return 0;
+// }
 
 //var index = (x + y * width) * 4;
 // pixels[index + 0] = videoPixel[index + 0];
