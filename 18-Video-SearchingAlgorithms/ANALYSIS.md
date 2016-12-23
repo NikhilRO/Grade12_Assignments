@@ -13,6 +13,7 @@ Of course, this is only an advantage if you actually do multiple searches on the
 At the end of the day, as with so many other things, "It depends... ;)". 
 
 One user was also kind enough to present an analogy: 
+
 "One phone book has the names in alphabetical order. To find the entry you want, you open in the middle, check the entry, then move forward or backward depending on whether you overshot or undershot [**sort() + binarySearch()**]
 
 The other phone book has the names in random order. To find the entry you want, you start at the beginning and continue until you find what you want. [**linearSearch()**]
