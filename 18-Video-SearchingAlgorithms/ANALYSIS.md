@@ -6,7 +6,7 @@
       2. Without sort time: 0.40 ms
       
 ####What situations would you use sort() + binarySearch() rather than just using linearSearch()? What about vice versa?
-According to people more knowledgable than myself, sort() + binarySearch() is advantageous in cases where you do multiple searches on the same data. The rationale behind is that you have to do the `O(n log n)` sorting only once, and then you can do the `O(log n)` binary search as often as you want, whereas linear search is `O(n)` every time.
+According to people more knowledgable than myself, **sort() + binarySearch() is advantageous in cases where you do multiple searches on the same data.** The rationale behind is that you have to do the `O(n log n)` sorting only once, and then you can do the `O(log n)` binary search as often as you want, whereas linear search is `O(n)` every time. *[`O(n log n + k log n)` vs `O(k*n)`]*
 
 Of course, this is only an advantage if you actually do multiple searches on the same data. But "write once, read often" scenarios are quite common. **In those cases, linearSearch() *could/might* work better; really depends on the nature of data.**
 
