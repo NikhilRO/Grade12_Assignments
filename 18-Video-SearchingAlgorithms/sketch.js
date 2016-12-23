@@ -23,6 +23,7 @@ function draw() {
   capture.loadPixels();
 
   videoPixel.splice(0, videoPixel.length);
+  // var timeLinear = millis();
   for (var x = 0; x < capture.width; x++) {
     for (var y = 0; y < capture.height; y++) {
       if (!(capture.get(x, y) instanceof p5.Image)) {
@@ -31,7 +32,7 @@ function draw() {
           capture.get(x, y)[2],
           capture.get(x, y)[3]));
         var tempColor = videoPixel[videoPixel.length - 1].returnColor();
-        if (red(tempColor) === wha * tRedToLookFor) { //Linear Search
+        if (red(tempColor) === whatRedToLookFor) { //Linear Search
           fill(255);
           strokeWeight(8);
           stroke(255);
@@ -44,7 +45,8 @@ function draw() {
       }
     }
   }
-
+  //console.log(timeLinear- millis());//"Time taken by linear search is "+ (timeLinear- millis()));
+  //var timeBinary = millis();
   if (videoPixel) {
     videoPixel.sort(function(a, b) {
       return a.red - b.red;
@@ -55,8 +57,11 @@ function draw() {
       tempArray.push(videoPixel[n].red);
     }
 
+    // var timeBinary = millis();
     var tempNumber = binarySearch(tempArray, whatRedToLookFor);
-    console.log(tempNumber);
+    // if (tempNumber != -1) {
+    //   console.log(timeBinary - millis());
+    // }
 
     for (var k = 0; k < 32; k++) {
       for (var l = 0; l < 24; l++) {
