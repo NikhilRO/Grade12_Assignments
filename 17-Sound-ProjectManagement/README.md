@@ -11,6 +11,6 @@
   * [p5.js - FFT Frequency Analysis](https://www.youtube.com/watch?v=2O3nm0Nvbi4)
 
 ### Note for self
-* How to put text on html
+* How to put text on html: Use createP. More info search DOM elements
 * why are distances wrong?
 * problem with the endScreen
