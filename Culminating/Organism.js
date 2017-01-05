@@ -16,8 +16,4 @@ function Organism(obj) { //(dataProvider, dataset, scientificName, rank, author,
   this.accepted= obj.Accepted;
   this.taxonomyTreeUrl= obj["Taxonomy tree url"];
   this.taxonPageUrl= obj["Taxon page url"];
-
-  this.display = function() {
-
-  }
 }
