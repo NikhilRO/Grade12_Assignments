@@ -4,51 +4,56 @@ var table;
 var organisms = [];
 
 function preload() {
-  table = loadTable("taxonomy-search-1398436937824.csv", "csv", "header", pushToArray);
+  //table = loadTable("taxonomy-search-1398436937824.csv", "csv", "header");
+  var tempArray = loadJSON("algae.json", intoArray); //Need this because I don't get an array otherwise
+}
+
+function intoArray(tempArray) {
+  var number = countProps(tempArray);
+  for (var i = 0; i < number; i++) {
+    organisms.push(tempArray[i]);
+  }
+  console.log("done array: " + millis());
 }
 
 function pushToArray() {
-  for (var i = 0; i < countProps(table.getObject()); i++) {
+  var number = countProps(table.getObject());
+  console.log(number);
+  for (var i = 0; i < number; i++) {
     //console.log[1];
     organisms.push(new Organism(table.getObject()[i]));
   }
-  table = undefined;
-  console.log(countProps(table.getObject()));
-  console.log("done array: "+ millis());
+  console.log("done array: " + millis());
 }
 
 function setup() {
-console.log("Setup:"+ millis());
+  table = undefined;
+  console.log("Setup:" + millis());
+  //saveJSON(organisms, 'algae.json');
+  createCanvas(windowWidth, windowHeight);
 }
 
 
 
-function draw() {}
+function draw() {
+  background(0);
+  ellipse();
+}
+
+
+
 
 //FOR SOME REASON .LENGTH DOES NOT WORK ON table.getObject().length
 function countProps(obj) {
-    var count = 0;
-    for (var p in obj) {
-      obj.hasOwnProperty(p) && count++;
-    }
-    return count; 
+  var count = 0;
+  for (var p in obj) {
+    obj.hasOwnProperty(p) && count++;
+  }
+  return count;
 }
 
-/*
-  
-  //count the columns
-  print(table.getRowCount() + " total rows in table");
-  print(table.getColumnCount() + " total columns in table");
+/*Results from run
+convert csv into usable objects= just less than 5 minute
+30 sec from json without looping
 
-  //print(table.getColumn("Class"));
-  //["Goat", "Leopard", "Zebra"]
-
-  print(table.getString(0, 0));
-  //console.log(table.getString(10, 23990));
-  //cycle through the table
-  // for (var r = 0; r < table.getRowCount(); r++) {
-  //   for (var c = 0; c < table.getColumnCount(); c++) {
-  //     print(table.getString(r, c));
-  //   }
-  // }
 */
