@@ -11,7 +11,10 @@
       * Two useful sources                                                
          1.  [Stack exchange: Array length not working](http://stackoverflow.com/questions/13541965/array-length-not-working)
          2.  [Stack exchange: Length of a JavaScript object](http://stackoverflow.com/questions/5223/length-of-a-javascript-object)
-      * Summary: some/most objects don't have length property so you need to build a function to calculate the length in these cases.  
+      * Summary: some/most objects don't have `.length` property so you need to build a function to calculate the length in these cases.  
 * Sorting an array of objects
        * [lesson-ish](http://www.javascriptkit.com/javatutors/arraysort2.shtml)
        * [Stack overflow: Sorting an array of JavaScript objects](http://stackoverflow.com/questions/979256/sorting-an-array-of-javascript-objects)
+* How to pass a label/property/object name to a function?
+       * [The problem](https://github.com/NikhilRO/Grade12_Assignments/blob/9f0e442cfc69ce9feb6f68eb5898de72fa2fbb21/Culminating/sketch.js#L25): you can't pass `kingdom` to a function, you need to send `"kingdom"`. So, how to you do `object.kingdom`
+       * The solution: You can send `"kingdom"` and use `object["kingdom"]`
