@@ -8,9 +8,9 @@
     * Summary: instead of the usual `object.variableName`, do `object["variable name"]`. **Note: NO DOT** 
     
 * Check [Issue #7](https://github.com/NikhilRO/Grade12_Assignments/issues/7)
-      * Two useful sources
-            1. [Stack exchange: Array length not working](http://stackoverflow.com/questions/13541965/array-length-not-working)
-            2. [Stack exchange: Length of a JavaScript object](http://stackoverflow.com/questions/5223/length-of-a-javascript-object)
+      * Two useful sources                                                
+         1.  [Stack exchange: Array length not working](http://stackoverflow.com/questions/13541965/array-length-not-working)
+         2.  [Stack exchange: Length of a JavaScript object](http://stackoverflow.com/questions/5223/length-of-a-javascript-object)
       * Summary: some/most objects don't have length property so you need to build a function to calculate the length in these cases.  
 
     
