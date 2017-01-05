@@ -1,9 +1,10 @@
 //(accessed through IABIN data portal, AlgaeBase, http://200.144.189.73/portal/datasets/resource/4)
 
 var table;
+var organisms= [];
 
 function preload() {
-  table = loadTable("taxonomy-search-1398436937824.csv", "csv", "header");
+  table = loadTable("taxonomy-search-1398436937824.csv", "csv", "header", pushToArray);
 }
 
 function setup() {
@@ -25,6 +26,11 @@ function setup() {
   // }
 }
 
-
-function draw() {
+function pushToArray() {
+  for (var i = 0; i < table.getObject().length; i++) {
+    organisms.push(new Organism(table.getObject()[i]));
+  }
+  table= undefined;
 }
+
+function draw() {}
