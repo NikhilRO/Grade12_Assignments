@@ -21,4 +21,4 @@
 * How to determine the scope of variable(this seems like advanced stuff)? 
        * [The problem](
 https://github.com/NikhilRO/Grade12_Assignments/blob/8e878c095da56dae2922bd727863ecbe7c7fac37/Culminating/Bubble.js#L1): I wish to create different arrays depending on how many types of things there are at the level. For example, there are three types of Kingdoms; so, I would want three arrays. I want to continue to do this at each level. I don't how many types there will be; so, array generation has to be automatic. But I want these arrays to be accessible to the whole object and not just that function.
-       * The solution: Can I use this.variableName anywhere in the constructor function/object to declare variables.
+       * The solution: Can I use this.variableName anywhere in the constructor function/object to declare variables. It might be easier to just use an Array. this array can contain other arrays as elements.
