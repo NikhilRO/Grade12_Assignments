@@ -1,15 +1,23 @@
 //How do I create the desired number of arrays with adequate scope?
 
-function Bubble(arr) {
+function Bubble(arr, listLevel, bubbleName) {
   this.listDown = false
-  this.listLevel = 1;
+  this.listLevel = listLevel;
+  this.listProperty = listToProperty(listLevel);
+  this.bubbleName= bubbleName;
+
   this.arrayContained = arr;
-  this.location = createVector();
+  this.categories = [];
+  this.bubbleContained= [];
+
+  this.location = createVector(width / 2, height / 2);
+  this.radius = 150;
+
 
   this.display = function(inputText) {
-    fill(255, 255, 0); //yellow
+    fill(255, 255, 0);
     stroke(0, 50);
-    ellipse(width / 2, height / 2, 300, 300);
+    ellipse(location.x, location.y, 2 * this.radius, 2 * this.radius);
     textSize(50);
     fill(0);
     textAlign(CENTER, CENTER);
@@ -18,18 +26,48 @@ function Bubble(arr) {
     noStroke();
   }
 
+  this.incomingPressed = function(loc) {
+    if (p5.Vector.dist(this.location, loc) < this.radius) {
+      this.listDown = true;
+    }
+  }
+
+  this.cutArray = function() {
+    this.sortArrayObjects(this.arrayContained);
+  }
+
+  this.listToPropery = function(level) {
+    if (level === 1) {
+      return "kingdom";
+    } else if (level === 2) {
+      return "phylum";
+    } else if (level === 3) {
+      return "clas";
+    } else if (level === 4) {
+      return "order";
+    } else if (level === 5) {
+      return "family";
+    } else if (level === 0) {
+      return "begin";
+    }
+  }
+
+
   this.move = function() {
 
   }
-  
-  this.decide= function(){
-    this.display("Let's begin");
+
+  this.decide = function() {
+    if (!this.listDown) {
+      this.display(this.bubbleName);
+    }
+    
   }
 
-  this.sortArrayObjects = function(arr, property) {
+  this.sortArrayObjects = function(arr) {
     arr.sort(function(a, b) {
-      var nameA = a[property].toLowerCase(); //TTI: I need organisms[1].kingdom.toLowerCase() but I can't pass just kingdom
-      var nameB = b[property].toLowerCase(); //So, I pass "kingdom" and then use organisms[1]["kingdom"].toLowerCase()
+      var nameA = a[this.listProperty].toLowerCase(); //TTI: I need organisms[1].kingdom.toLowerCase() but I can't pass just kingdom
+      var nameB = b[this.listProperty].toLowerCase(); //So, I pass "kingdom" and then use organisms[1]["kingdom"].toLowerCase()
       if (nameA < nameB) { //sort string ascending
         return -1
       } else if (nameA > nameB) {
