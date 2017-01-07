@@ -1,4 +1,5 @@
 //How do I create the desired number of arrays with adequate scope?
+//Are there setup in javascript constructor function?
 
 function Bubble(arr, listLevel, bubbleName) {
   this.listDown = false
@@ -9,9 +10,13 @@ function Bubble(arr, listLevel, bubbleName) {
   this.arrayContained = arr;
   this.categories = [];
 
-  this.location = createVector(random(width), random(height));//width / 2, height / 2);
+  this.location = createVector(random(width), random(height)); //width / 2, height / 2);
   this.radius = 75;
 
+  this.initialization = function() {
+    this.nextProperty = this.listToProperty(this.listLevel + 1);
+    //this.sortArrayObjects();
+  }
 
   this.display = function() {
     fill(255, 255, 0);
@@ -30,9 +35,10 @@ function Bubble(arr, listLevel, bubbleName) {
       if (p5.Vector.dist(this.location, loc) < this.radius) {
         this.listDown = true;
         var time = millis();
-        this.nextProperty = this.listToProperty(this.listLevel + 1);
-        this.sortArrayObjects(); //I could move it earlier
         this.cutArray();
+        for (var j = 0; j < this.categories.length; j++) {
+          this.categories[j].initialization();
+        }
         console.log("Time taken to process " + this.nextProperty + " : " + (millis() - time));
       }
     } else {
@@ -45,9 +51,13 @@ function Bubble(arr, listLevel, bubbleName) {
   this.cutArray = function() {
     var previousIndex = 0;
     for (var i = 1; i < this.arrayContained.length; i++) {
-      if (this.arrayContained[i - 1][this.nextProperty] != this.arrayContained[i][this.nextProperty]) { // != or !==
-        this.categories.push(new Bubble(this.arrayContained.slice(previousIndex, i - 1), this.listLevel + 1, this.arrayContained[i - 1][this.nextProperty]));
-        previousIndex = i;
+      if (i < this.arrayContained.length - 1) {
+        if (this.arrayContained[i - 1][this.nextProperty] != this.arrayContained[i][this.nextProperty]) { // != or !==
+          this.categories.push(new Bubble(this.arrayContained.slice(previousIndex, i - 1), this.listLevel + 1, this.arrayContained[i - 1][this.nextProperty]));
+          previousIndex = i;
+        }
+      } else {
+        this.categories.push(new Bubble(this.arrayContained.slice(previousIndex, i), this.listLevel + 1, this.arrayContained[i][this.nextProperty]));
       }
     }
   }
@@ -88,15 +98,15 @@ function Bubble(arr, listLevel, bubbleName) {
 
   this.sortArrayObjects = function() { //I DON'T GET IT. What is wrong? It works fine from the console. but for some reason you can't call it  
     this.arrayContained.sort(function(a, b) {
-      var nameA = a[this.nextProperty].toLowerCase(); //TTI: I need organisms[1].kingdom.toLowerCase() but I can't pass just kingdom
-      var nameB = b[this.nextProperty].toLowerCase(); //So, I pass "kingdom" and then use organisms[1]["kingdom"].toLowerCase()
+      var nameA = a[this.nextProperty].toLowerCase();
+      var nameB = b[this.nextProperty].toLowerCase();
       if (nameA < nameB) { //sort string ascending
-        return -1
+        return -1;
       } else if (nameA > nameB) {
-        return 1
+        return 1;
       } else {
-        return 0
-      } //default return value (no sorting)
+        return 0;
+      }
     })
   }
 }

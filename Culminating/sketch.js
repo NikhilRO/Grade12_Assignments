@@ -18,7 +18,9 @@ function intoArray(tempArray) {
     organisms.push(tempArray[i]);
   }
   console.log("Done array: " + millis());
-  visualization = new Bubble(organisms, 0, "Let's begin"); //FUTURE ERROR ALERT: this could give me problems; let's try it
+  visualization = new Bubble(organisms, 0, "Let's begin"); //FUTURE ERROR ALERT: this/[organisms] could give me problems; let's try it
+  visualization.initialization();
+
 }
 
 function setup() {
