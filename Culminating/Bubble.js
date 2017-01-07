@@ -3,40 +3,57 @@
 function Bubble(arr, listLevel, bubbleName) {
   this.listDown = false
   this.listLevel = listLevel;
-  this.listProperty = listToProperty(listLevel);
-  this.bubbleName= bubbleName;
+  this.nextProperty; //this.listToProperty(listLevel);
+  this.bubbleName = bubbleName;
 
   this.arrayContained = arr;
   this.categories = [];
-  this.bubbleContained= [];
 
-  this.location = createVector(width / 2, height / 2);
-  this.radius = 150;
+  this.location = createVector(random(width), random(height));//width / 2, height / 2);
+  this.radius = 75;
 
 
-  this.display = function(inputText) {
+  this.display = function() {
     fill(255, 255, 0);
     stroke(0, 50);
-    ellipse(location.x, location.y, 2 * this.radius, 2 * this.radius);
-    textSize(50);
+    ellipse(this.location.x, this.location.y, 2 * this.radius, 2 * this.radius);
+    textSize(25);
     fill(0);
     textAlign(CENTER, CENTER);
-    text(inputText, ext, width / 2, height / 2);
+    text(this.bubbleName, this.location.x, this.location.y);
     noFill();
     noStroke();
   }
 
   this.incomingPressed = function(loc) {
-    if (p5.Vector.dist(this.location, loc) < this.radius) {
-      this.listDown = true;
+    if (!this.listDown) {
+      if (p5.Vector.dist(this.location, loc) < this.radius) {
+        this.listDown = true;
+        var time = millis();
+        this.nextProperty = this.listToProperty(this.listLevel + 1);
+        this.sortArrayObjects(); //I could move it earlier
+        this.cutArray();
+        console.log("Time taken to process " + this.nextProperty + " : " + (millis() - time));
+      }
+    } else {
+      for (var i = 0; i < this.categories.length; i++) {
+        this.categories[i].incomingPressed(loc);
+      }
     }
   }
 
   this.cutArray = function() {
-    this.sortArrayObjects(this.arrayContained);
+    var previousIndex = 0;
+    for (var i = 1; i < this.arrayContained.length; i++) {
+      if (this.arrayContained[i - 1][this.nextProperty] != this.arrayContained[i][this.nextProperty]) { // != or !==
+        this.categories.push(new Bubble(this.arrayContained.slice(previousIndex, i - 1), this.listLevel + 1, this.arrayContained[i - 1][this.nextProperty]));
+        previousIndex = i;
+      }
+    }
   }
 
-  this.listToPropery = function(level) {
+
+  this.listToProperty = function(level) {
     if (level === 1) {
       return "kingdom";
     } else if (level === 2) {
@@ -49,6 +66,8 @@ function Bubble(arr, listLevel, bubbleName) {
       return "family";
     } else if (level === 0) {
       return "begin";
+    } else {
+      return "Not valid/exhausted all the options";
     }
   }
 
@@ -59,15 +78,18 @@ function Bubble(arr, listLevel, bubbleName) {
 
   this.decide = function() {
     if (!this.listDown) {
-      this.display(this.bubbleName);
+      this.display();
+    } else {
+      for (var i = 0; i < this.categories.length; i++) {
+        this.categories[i].decide();
+      }
     }
-    
   }
 
-  this.sortArrayObjects = function(arr) {
-    arr.sort(function(a, b) {
-      var nameA = a[this.listProperty].toLowerCase(); //TTI: I need organisms[1].kingdom.toLowerCase() but I can't pass just kingdom
-      var nameB = b[this.listProperty].toLowerCase(); //So, I pass "kingdom" and then use organisms[1]["kingdom"].toLowerCase()
+  this.sortArrayObjects = function() { //I DON'T GET IT. What is wrong? It works fine from the console. but for some reason you can't call it  
+    this.arrayContained.sort(function(a, b) {
+      var nameA = a[this.nextProperty].toLowerCase(); //TTI: I need organisms[1].kingdom.toLowerCase() but I can't pass just kingdom
+      var nameB = b[this.nextProperty].toLowerCase(); //So, I pass "kingdom" and then use organisms[1]["kingdom"].toLowerCase()
       if (nameA < nameB) { //sort string ascending
         return -1
       } else if (nameA > nameB) {
@@ -78,6 +100,20 @@ function Bubble(arr, listLevel, bubbleName) {
     })
   }
 }
+
+/* In chrome for sort
+visualization.arrayContained.sort(function(a, b) {
+      var nameA = a[visualization.nextProperty].toLowerCase(); //TTI: I need organisms[1].kingdom.toLowerCase() but I can't pass just kingdom
+      var nameB = b[visualization.nextProperty].toLowerCase(); //So, I pass "kingdom" and then use organisms[1]["kingdom"].toLowerCase()
+      if (nameA < nameB) { //sort string ascending
+        return -1
+      } else if (nameA > nameB) {
+        return 1
+      } else {
+        return 0
+      } //default return value (no sorting)
+    })
+  
 
 /*
 Let's begin:0

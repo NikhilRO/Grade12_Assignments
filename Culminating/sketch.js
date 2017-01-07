@@ -12,6 +12,7 @@ function preload() {
 }
 
 function intoArray(tempArray) {
+  createCanvas(windowWidth, windowHeight);
   var number = countProps(tempArray);
   for (var i = 0; i < number; i++) {
     organisms.push(tempArray[i]);
@@ -23,7 +24,6 @@ function intoArray(tempArray) {
 function setup() {
   table = undefined;
   console.log("Setup:" + millis());
-  createCanvas(windowWidth, windowHeight);
 }
 
 function mousePressed() {
