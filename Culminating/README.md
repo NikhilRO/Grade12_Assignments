@@ -23,7 +23,7 @@
 https://github.com/NikhilRO/Grade12_Assignments/blob/8e878c095da56dae2922bd727863ecbe7c7fac37/Culminating/Bubble.js#L1): I wish to create different arrays depending on how many types of things there are at the level. For example, there are three types of Kingdoms; so, I would want three arrays. I want to continue to do this at each level. I don't how many types there will be; so, array generation has to be automatic. But I want these arrays to be accessible to the whole object and not just that function.
        * The solution: Can I use this.variableName anywhere in the constructor function/object to declare variables. It might be easier to just use an Array. this array can contain other arrays as elements.
 * I discovered a minor challenge. yay.
-       * [The problem](https://github.com/NikhilRO/Grade12_Assignments/blob/164d693e508a5904f4a00948cf13f458a2cd02cc/Culminating/Bubble.js#L48) As you can see from the algorith 
-       * The solution: 
+       * [The problem](https://github.com/NikhilRO/Grade12_Assignments/blob/164d693e508a5904f4a00948cf13f458a2cd02cc/Culminating/Bubble.js#L48) As you can see from the algorithm, it only creates an array when something is different. If all the data belong to the same phylum then it displays nothing. 
+       * The solution: Add option at end for last case. If all are same, then last case becomes the only case.
 * Check [Issue #8](https://github.com/NikhilRO/Grade12_Assignments/issues/8)
        
