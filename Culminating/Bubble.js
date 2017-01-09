@@ -4,7 +4,7 @@
 function Bubble(arr, listLevel, bubbleName) {
   this.listDown = false
   this.listLevel = listLevel;
-  this.nextProperty; //this.listToProperty(listLevel);
+  this.nextProperty; 
   this.bubbleName = bubbleName;
 
   this.arrayContained = arr;
@@ -15,7 +15,7 @@ function Bubble(arr, listLevel, bubbleName) {
 
   this.initialization = function() {
     this.nextProperty = this.listToProperty(this.listLevel + 1);
-    //this.sortArrayObjects();
+    this.sortArrayObjects();
   }
 
   this.display = function() {
@@ -96,7 +96,7 @@ function Bubble(arr, listLevel, bubbleName) {
     }
   }
 
-  this.sortArrayObjects = function() { //I DON'T GET IT. What is wrong? It works fine from the console. but for some reason you can't call it  
+  this.sortArrayObjects = function() {   
     this.arrayContained.sort(function(a, b) {
       var nameA = a[this.nextProperty].toLowerCase();
       var nameB = b[this.nextProperty].toLowerCase();
@@ -107,7 +107,7 @@ function Bubble(arr, listLevel, bubbleName) {
       } else {
         return 0;
       }
-    })
+    }.bind(this))
   }
 }
 
