@@ -111,20 +111,6 @@ function Bubble(arr, listLevel, bubbleName) {
   }
 }
 
-/* In chrome for sort
-visualization.arrayContained.sort(function(a, b) {
-      var nameA = a[visualization.nextProperty].toLowerCase(); //TTI: I need organisms[1].kingdom.toLowerCase() but I can't pass just kingdom
-      var nameB = b[visualization.nextProperty].toLowerCase(); //So, I pass "kingdom" and then use organisms[1]["kingdom"].toLowerCase()
-      if (nameA < nameB) { //sort string ascending
-        return -1
-      } else if (nameA > nameB) {
-        return 1
-      } else {
-        return 0
-      } //default return value (no sorting)
-    })
-  
-
 /*
 Let's begin:0
 kingdom:1 
