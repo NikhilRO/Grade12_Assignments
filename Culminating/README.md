@@ -26,4 +26,12 @@ https://github.com/NikhilRO/Grade12_Assignments/blob/8e878c095da56dae2922bd72786
        * [The problem](https://github.com/NikhilRO/Grade12_Assignments/blob/164d693e508a5904f4a00948cf13f458a2cd02cc/Culminating/Bubble.js#L48) As you can see from the algorithm, it only creates an array when something is different. If all the data belong to the same phylum then it displays nothing. 
        * The solution: Add option at end for last case. If all are same, then last case becomes the only case.
 * Check [Issue #8](https://github.com/NikhilRO/Grade12_Assignments/issues/8)
+      * [The problem](https://github.com/NikhilRO/Grade12_Assignments/blob/164d693e508a5904f4a00948cf13f458a2cd02cc/Culminating/Bubble.js#L89) As you can see from the code, I was calling `this.nextProperty`; I expected it to call the object that the function is built in but due to the way it works in javascript, it ended up going to global scope within the function rather than object. So, I was calling the `window` and it returned undefined on nextProperty.
+      * Resource: [Stack Exchange question: "“this” in a function in an object in a function"](https://stackoverflow.com/questions/21837269/this-in-a-function-in-an-object-in-a-function)
+         * Suggestion: `... you can bind the function:
+     sort(function(a,b) {
+       //stuff
+        }.bind(this))
+   }`
+      * [The solution](https://github.com/NikhilRO/Grade12_Assignments/blob/master/Culminating/Bubble.js#L110): 
        
