@@ -1,6 +1,10 @@
+### Task: [Do this](https://www.mindomo.com/mindmap/ics4u-culminating-assignment-2016-2017-1fe7a3d114ec488ba5fd9a23c9d3725f) using [this data](http://bit.ly/seidel-bigdata)
+
+   *  I used Algae.
+   *  Summary of task: Create a visualization on Big Data. 
 
 
-####Notes for self
+#### Learning Moments
 * Check [Issue #6](https://github.com/NikhilRO/Grade12_Assignments/issues/6)
     * Two useful sources
           1. [Stack exchange](http://stackoverflow.com/questions/8317982/access-javascript-object-with-space-in-key)
