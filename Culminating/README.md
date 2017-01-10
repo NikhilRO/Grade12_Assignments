@@ -33,5 +33,5 @@ https://github.com/NikhilRO/Grade12_Assignments/blob/8e878c095da56dae2922bd72786
        //stuff
         }.bind(this))
    }`
-      * [The solution](https://github.com/NikhilRO/Grade12_Assignments/blob/master/Culminating/Bubble.js#L110): 
+      * [The solution](https://github.com/NikhilRO/Grade12_Assignments/blob/master/Culminating/Bubble.js#L110)
        
