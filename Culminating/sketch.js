@@ -12,14 +12,14 @@ function preload() {
 }
 
 function intoArray(tempArray) {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(4000/2,3000/2)//windowWidth, windowHeight); //NEED A BETTER WAY TO NAVIGATE
   var number = countProps(tempArray);
   for (var i = 0; i < number; i++) {
     organisms.push(tempArray[i]);
   }
   console.log("Done array: " + millis());
   visualization = new Bubble(organisms, 0, "Let's begin"); //FUTURE ERROR ALERT: this/[organisms] could give me problems; let's try it
-  visualization.initialization();
+  visualization.initialization(createVector(width / 2, height / 2), min(windowWidth,windowHeight)/2);
 
 }
 
@@ -35,6 +35,19 @@ function mousePressed() {
 function draw() {
   background(0);
   visualization.decide();
+
+  // var angleRotate = 360 / 6;
+  // var tempRad = 100;
+  // var centerX = width/2;
+  // var centerY = height/2;
+  // for (var j = 0; j < 6; j++) {
+  //   var newLocX = (tempRad * Math.cos(radians(angleRotate * j)) + centerX);
+  //   var newLocY = (tempRad * Math.sin(radians(angleRotate * j)) + centerY);
+  //   stroke(255);
+  //   fill(255);
+  //   strokeWeight(10);
+  //   point(newLocX, newLocY);
+  // }
 }
 
 

@@ -4,24 +4,33 @@
 function Bubble(arr, listLevel, bubbleName) {
   this.listDown = false
   this.listLevel = listLevel;
-  this.nextProperty; 
+  this.nextProperty;
   this.bubbleName = bubbleName;
 
   this.arrayContained = arr;
   this.categories = [];
 
-  this.location = createVector(random(width), random(height)); //width / 2, height / 2);
-  this.radius = 75;
+  this.location; //= createVector(random(width), random(height)); //width / 2, height / 2);
+  this.radius; // = 75;
+  this.originLoc;
 
-  this.initialization = function() {
+  this.initialization = function(loc, radius, endLine) {
     this.nextProperty = this.listToProperty(this.listLevel + 1);
     this.sortArrayObjects();
+    this.location = loc;
+    this.radius = radius;
+    this.originLoc = endLine;
   }
 
   this.display = function() {
     fill(255, 255, 0);
     stroke(0, 50);
     ellipse(this.location.x, this.location.y, 2 * this.radius, 2 * this.radius);
+    if (this.originLoc) {
+      stroke(255, 255, 0, 50);
+      line(this.location.x, this.location.y, this.originLoc.x, this.originLoc.y);
+      noStroke();
+    }
     textSize(25);
     fill(0);
     textAlign(CENTER, CENTER);
@@ -36,9 +45,7 @@ function Bubble(arr, listLevel, bubbleName) {
         this.listDown = true;
         var time = millis();
         this.cutArray();
-        for (var j = 0; j < this.categories.length; j++) {
-          this.categories[j].initialization();
-        }
+        this.prepareNext();
         console.log("Time taken to process " + this.nextProperty + " : " + (millis() - time));
       }
     } else {
@@ -81,6 +88,17 @@ function Bubble(arr, listLevel, bubbleName) {
     }
   }
 
+  this.prepareNext = function() {
+    var angleRotate = 360 / this.categories.length;
+    var tempRad = this.radius / 2;
+    var centerX = this.location.x;
+    var centerY = this.location.y;
+    for (var j = 0; j < this.categories.length; j++) {
+      var newLocX = (2 * tempRad * Math.cos(radians(angleRotate * j)) + centerX);
+      var newLocY = (2 * tempRad * Math.sin(radians(angleRotate * j)) + centerY);
+      this.categories[j].initialization(createVector(newLocX, newLocY), tempRad, createVector(centerX, centerY));
+    }
+  }
 
   this.move = function() {
 
@@ -96,7 +114,7 @@ function Bubble(arr, listLevel, bubbleName) {
     }
   }
 
-  this.sortArrayObjects = function() {   
+  this.sortArrayObjects = function() {
     this.arrayContained.sort(function(a, b) {
       var nameA = a[this.nextProperty].toLowerCase();
       var nameB = b[this.nextProperty].toLowerCase();
