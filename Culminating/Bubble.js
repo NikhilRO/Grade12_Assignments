@@ -6,6 +6,7 @@ function Bubble(arr, listLevel, bubbleName) {
   this.listLevel = listLevel;
   this.nextProperty;
   this.bubbleName = bubbleName;
+  this.textFactor;
 
   this.arrayContained = arr;
   this.categories = [];
@@ -20,6 +21,9 @@ function Bubble(arr, listLevel, bubbleName) {
     this.location = loc;
     this.radius = radius;
     this.originLoc = endLine;
+    textSize(20);
+    var textWide = textWidth(this.bubbleName);
+    this.textFactor = 20 / (textWide / (1.75 * this.radius));
   }
 
   this.display = function() {
@@ -31,7 +35,7 @@ function Bubble(arr, listLevel, bubbleName) {
       line(this.location.x, this.location.y, this.originLoc.x, this.originLoc.y);
       noStroke();
     }
-    textSize(25);
+    textSize(this.textFactor);
     fill(0);
     textAlign(CENTER, CENTER);
     text(this.bubbleName, this.location.x, this.location.y);
@@ -90,13 +94,11 @@ function Bubble(arr, listLevel, bubbleName) {
 
   this.prepareNext = function() {
     var angleRotate = 360 / this.categories.length;
-    var tempRad = this.radius / 2;
-    var centerX = this.location.x;
-    var centerY = this.location.y;
+    var nextRadius = Math.pow(Math.pow(this.radius, 2) / this.categories.length, 1 / 2);
     for (var j = 0; j < this.categories.length; j++) {
-      var newLocX = (2 * tempRad * Math.cos(radians(angleRotate * j)) + centerX);
-      var newLocY = (2 * tempRad * Math.sin(radians(angleRotate * j)) + centerY);
-      this.categories[j].initialization(createVector(newLocX, newLocY), tempRad, createVector(centerX, centerY));
+      var newLocX = (this.radius * Math.cos(radians(angleRotate * j)) + this.location.x);
+      var newLocY = (this.radius * Math.sin(radians(angleRotate * j)) + this.location.y);
+      this.categories[j].initialization(createVector(newLocX, newLocY), nextRadius, createVector(this.location.x, this.location.y));
     }
   }
 

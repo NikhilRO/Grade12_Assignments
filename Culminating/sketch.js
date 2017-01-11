@@ -35,19 +35,6 @@ function mousePressed() {
 function draw() {
   background(0);
   visualization.decide();
-
-  // var angleRotate = 360 / 6;
-  // var tempRad = 100;
-  // var centerX = width/2;
-  // var centerY = height/2;
-  // for (var j = 0; j < 6; j++) {
-  //   var newLocX = (tempRad * Math.cos(radians(angleRotate * j)) + centerX);
-  //   var newLocY = (tempRad * Math.sin(radians(angleRotate * j)) + centerY);
-  //   stroke(255);
-  //   fill(255);
-  //   strokeWeight(10);
-  //   point(newLocX, newLocY);
-  // }
 }
 
 
