@@ -1,11 +1,9 @@
-//How to put text on html
 //why are distances wrong?
-//problem with the endScreen
 
 var amp, gameStart, gameOver, numberUsed, jumper;
 var ampHistory = [];
 var blocks = [];
-var bubblegum, character, person, score, fade;
+var bubblegum, person, score, fade;
 
 function preload() {
   bubblegum = loadImage("bubblegum.png");
@@ -19,7 +17,7 @@ function setup() {
   createP("Press R or r to restart the game");
   createP("Collect stars to increase your score");
 
-  var cnv = createCanvas(600,600);//(windowWidth / 2, windowHeight);
+  var cnv = createCanvas(600, 600); //(windowWidth / 2, windowHeight);
   cnv.position(width / 2, 0);
 
   bubblegum.resize(width / 5, height / 14);
@@ -36,7 +34,6 @@ function setup() {
   for (var i = 7; i >= -1; i--) {
     blocks.push(new Block(createVector(random(width), i * height / 8.00), bubblegum));
   }
-
   song.loop();
 }
 
@@ -59,18 +56,11 @@ function draw() {
  */
 function game() {
   for (var i = 0; i < blocks.length; i++) {
-    blocks[i].display()
     blocks[i].move();
-
-    // if (blocks[i].checkEdges()) {
-    //   blocks.splice(i, 1);
-    //   blocks.push(new Block(createVector(ampHistory[numberUsed], height / 8)));
-    //   numberUsed++;
-    // }
-
+    blocks[i].display();
+    
     var distance = jumper.location.dist(blocks[i].location);
     if (distance < 50) {
-      //console.log(distance);
       if (jumper.contact()) {
         moveBackground();
       }
@@ -92,7 +82,6 @@ function game() {
   if (blocks[0].checkEdges()) {
     blocks.splice(0, 1);
     blocks.push(new Block(createVector(ampHistory[numberUsed] || random(width), -height / 8.00), bubblegum));
-    //console.log(ampHistory[numberUsed] || random(width));
     console.log(-height / 8.00);
     numberUsed += floor(random(10, 30));
     if (numberUsed > 950) {
@@ -160,6 +149,7 @@ function collect() {
 
   //displaying score in style
   fill(255, 255, 0); //yellow
+  strokeWeight(1);
   stroke(0, 50);
   ellipse(width / 2 + width / 4 + width / 8, height / 2 + height / 4 + height / 8, 100, 100);
   textSize(50);
@@ -247,32 +237,3 @@ function mousePressed() {
     }
   }
 }
-// function keyPressed() {
-//   if (gameStart && !gameOver) {
-//     if (keyCode == RIGHT_ARROW) {
-//       jumper.location.x += 10;
-//     }  else if (keyCode == LEFT_ARROW) {
-//       jumper.location.x -= 10;
-//     } 
-//     return false;
-//   }
-// }
-
-//   document.onkeydown = checkKey;
-//   function checkKey(e) {
-
-//   e = e || window.event;
-
-//   if (e.keyCode == '38') {
-//     // up arrow
-//   } else if (e.keyCode == '40') {
-//     // down arrow
-//   } else if (e.keyCode == '37') {
-//     // left arrow
-//   } else if (e.keyCode == '39') {
-//     // right arrow
-//   }
-
-// }
-
-//975 ampValues available
