@@ -11,9 +11,9 @@ A big part of the assignment was planning your project and planning it in a way 
 
 
 
-​	To clarify, all this stuff is before I started coding anything. Uncertainty as to which one to choose lead to me to delay my decision to start coding; leading to subsequent delays. Contrary to what some might think, I am not lazy; it just didn't feel right :')
+​	To clarify, all this stuff is before I started coding anything. Uncertainty as to which one to choose lead to me to delay my decision to start coding; leading to subsequent delays. Contrary to conventional wisdom, I am not lazy; it just didn't feel right :')
 
-​	With time running out of hands, I decided to model my project after doodlejump. It seemed like did a good job of being simple and interesting simultaneously. The plan was ready. I got to coding. One problem worth mentioning is what do with their sounds. I decided to put blocks at a distance based on their amplitude. I would consider this a success. 
+​	With time running out of hands, I decided to model my project after doodlejump. It seemed like it did a good job of being simple and interesting simultaneously. The plan was ready. I got to coding. One problem worth mentioning is what do with their sounds. I decided to put blocks at a distance based on their amplitude. I would consider this a success. 
 
 ​	The mechanics of the game are simple enough if you can work with arrays and objects. The only real challenge is getting the scrolling right. I think I failed at that (70 percent). Last year, the scrolling was a challenge in culminating too, but I had lots of time to try thousands of combination to see which one worked best. I just couldn't afford to do that. One week. 
 
