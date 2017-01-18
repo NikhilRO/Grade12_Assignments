@@ -4,9 +4,11 @@
 function Bubble(arr, listLevel, bubbleName) {
   this.listDown = false
   this.listLevel = listLevel;
+  this.totolLevels = 5;
   this.nextProperty;
   this.bubbleName = bubbleName;
   this.textFactor;
+  this.colour;
 
   this.arrayContained = arr;
   this.categories = [];
@@ -17,34 +19,43 @@ function Bubble(arr, listLevel, bubbleName) {
 
   this.initialization = function(loc, radius, endLine) {
     this.nextProperty = this.listToProperty(this.listLevel + 1);
+    this.colour = this.listToColour(this.listLevel + 1);
     this.sortArrayObjects();
     this.location = loc;
     this.radius = radius;
-    this.originLoc = endLine;
+    this.originLoc = endLine || loc;
     textSize(20);
-    var textWide = textWidth(this.bubbleName);
+    var textWide;
+    if (this.bubbleName !== "") {
+      textWide = textWidth(this.bubbleName);
+    } else {
+      textWide = textWidth(this.arrayContained.length.toString());
+      textWide *= 2;
+    }
     this.textFactor = 20 / (textWide / (1.75 * this.radius));
   }
 
   this.display = function() {
-    fill(255, 255, 0);
-    stroke(0, 50);
-    ellipse(this.location.x, this.location.y, 2 * this.radius, 2 * this.radius);
+    fill(this.colour);
     if (this.originLoc) {
       stroke(255, 255, 0, 50);
       line(this.location.x, this.location.y, this.originLoc.x, this.originLoc.y);
       noStroke();
     }
+    stroke(0, 50);
+    ellipse(this.location.x, this.location.y, 2 * this.radius, 2 * this.radius);
     textSize(this.textFactor);
-    fill(0);
+    this.arrayContained(0);
     textAlign(CENTER, CENTER);
     text(this.bubbleName, this.location.x, this.location.y);
+    textSize(this.textFactor / 2);
+    text("(" + this.arrayContained.length + ")", this.location.x, this.location.y + this.textFactor);
     noFill();
     noStroke();
   }
 
   this.incomingPressed = function(loc) {
-    if (!this.listDown) {
+    if (!this.listDown && this.listDown) {
       if (p5.Vector.dist(this.location, loc) < this.radius) {
         this.listDown = true;
         var time = millis();
@@ -91,14 +102,36 @@ function Bubble(arr, listLevel, bubbleName) {
       return "Not valid/exhausted all the options";
     }
   }
+  this.listToColour = function(level) {
+    if (level === 1) {
+      return color(255, 255, 0); //yellow
+    } else if (level === 2) {
+      return color(0, 255, 255); //cyan
+    } else if (level === 3) {
+      return color(255, 0, 255); //magenta
+    } else if (level === 4) {
+      return color(75, 0, 130); //indigo
+    } else if (level === 5) {
+      return color(12, 240, 116); // aqua green
+    } else if (level === 0) {
+      return color(255);
+    } else {
+      return color(255);
+    }
+  }
+
 
   this.prepareNext = function() {
     var angleRotate = 360 / this.categories.length;
     var nextRadius = Math.pow(Math.pow(this.radius, 2) / this.categories.length, 1 / 2);
     for (var j = 0; j < this.categories.length; j++) {
-      var newLocX = (this.radius * Math.cos(radians(angleRotate * j)) + this.location.x);
-      var newLocY = (this.radius * Math.sin(radians(angleRotate * j)) + this.location.y);
-      this.categories[j].initialization(createVector(newLocX, newLocY), nextRadius, createVector(this.location.x, this.location.y));
+      var newCenter = this.location.copy();
+      newCenter = newCenter.sub(this.originLoc);
+      newCenter = newCenter.mult(2);
+      newCenter = newCenter.add(this.originLoc)
+      var newLocX = (this.radius * Math.cos(radians(angleRotate * j)) + newCenter.x);
+      var newLocY = (this.radius * Math.sin(radians(angleRotate * j)) + newCenter.y);
+      this.categories[j].initialization(createVector(newLocX, newLocY), nextRadius, createVector(newCenter.x, newCenter.y));
     }
   }
 
@@ -117,18 +150,30 @@ function Bubble(arr, listLevel, bubbleName) {
   }
 
   this.sortArrayObjects = function() {
-    this.arrayContained.sort(function(a, b) {
-      var nameA = a[this.nextProperty].toLowerCase();
-      var nameB = b[this.nextProperty].toLowerCase();
-      if (nameA < nameB) { //sort string ascending
-        return -1;
-      } else if (nameA > nameB) {
-        return 1;
-      } else {
-        return 0;
+    if (this.arrayContained.length > 20) {
+      this.arrayContained.sort(function(a, b) {
+        var nameA = a[this.nextProperty].toLowerCase();
+        var nameB = b[this.nextProperty].toLowerCase();
+        if (nameA < nameB) { //sort string ascending
+          return -1;
+        } else if (nameA > nameB) {
+          return 1;
+        } else {
+          return 0;
+        }
+      }.bind(this))
+    } else {
+      for (var i = 0; i < this.arrayContained.length; i++) {      //insertionSort
+        var current = this.arrayContained[i][this.nextProperty].toLowerCase();
+        var currentObject = this.arrayContained[i][this.nextProperty];
+        for (var j = i; j > 0 && this.arrayContained[j - 1][this.nextProperty].toLowerCase() > current; j--) {
+          this.arrayContained[j] = this.arrayContained[j - 1];
+        }
+        this.arrayContained[j] = currentObject;
       }
-    }.bind(this))
+    }
   }
+
 }
 
 /*
