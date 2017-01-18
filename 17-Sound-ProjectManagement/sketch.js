@@ -55,10 +55,20 @@ function draw() {
  * Runs the actual game 
  */
 function game() {
+  if (blocks[0].checkEdges()) {
+    blocks.splice(0, 1);
+    blocks.push(new Block(createVector(ampHistory[numberUsed] || random(width), -height / 8.00), bubblegum));
+    console.log(-height / 8.00);
+    numberUsed += floor(random(10, 30));
+    if (numberUsed > 950) {
+      numberUsed = 0;
+    }
+  }
+  
   for (var i = 0; i < blocks.length; i++) {
     blocks[i].move();
     blocks[i].display();
-    
+
     var distance = jumper.location.dist(blocks[i].location);
     if (distance < 50) {
       if (jumper.contact()) {
@@ -75,17 +85,6 @@ function game() {
   if (jumper.location.y >= height / 2 + height / 128) {
     for (var k = 0; k < blocks.length; k++) {
       blocks[k].stopMove();
-    }
-  }
-
-
-  if (blocks[0].checkEdges()) {
-    blocks.splice(0, 1);
-    blocks.push(new Block(createVector(ampHistory[numberUsed] || random(width), -height / 8.00), bubblegum));
-    console.log(-height / 8.00);
-    numberUsed += floor(random(10, 30));
-    if (numberUsed > 950) {
-      numberUsed = 0;
     }
   }
 
@@ -130,7 +129,6 @@ function jumperMovements() {
     gameStart = false;
     gameOver = true;
     song.stop();
-
   }
 }
 
