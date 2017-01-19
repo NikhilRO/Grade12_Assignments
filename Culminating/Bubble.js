@@ -1,10 +1,7 @@
-//How do I create the desired number of arrays with adequate scope?
-//Are there setup in javascript constructor function?
-
 function Bubble(arr, listLevel, bubbleName) {
   this.listDown = false
   this.listLevel = listLevel;
-  this.totolLevels = 5;
+  this.totalLevels = 4;
   this.nextProperty;
   this.bubbleName = bubbleName;
   this.textFactor;
@@ -30,7 +27,7 @@ function Bubble(arr, listLevel, bubbleName) {
       textWide = textWidth(this.bubbleName);
     } else {
       textWide = textWidth(this.arrayContained.length.toString());
-      textWide *= 2;
+      textWide *= 5;
     }
     this.textFactor = 20 / (textWide / (1.75 * this.radius));
   }
@@ -44,28 +41,36 @@ function Bubble(arr, listLevel, bubbleName) {
     }
     stroke(0, 50);
     ellipse(this.location.x, this.location.y, 2 * this.radius, 2 * this.radius);
-    textSize(this.textFactor);
-    this.arrayContained(0);
-    textAlign(CENTER, CENTER);
-    text(this.bubbleName, this.location.x, this.location.y);
-    textSize(this.textFactor / 2);
-    text("(" + this.arrayContained.length + ")", this.location.x, this.location.y + this.textFactor);
+    fill(0);
+    if (this.bubbleName !== "") {
+      textSize(this.textFactor);
+      textAlign(CENTER, CENTER);
+      text(this.bubbleName, this.location.x, this.location.y);
+      textSize(this.textFactor / 2);
+      text("(" + this.arrayContained.length + ")", this.location.x, this.location.y + this.textFactor);
+    } else {
+      textSize(this.textFactor);
+      text("(" + this.arrayContained.length + ")", this.location.x, this.location.y);
+    }
     noFill();
     noStroke();
   }
 
   this.incomingPressed = function(loc) {
-    if (!this.listDown && this.listDown) {
-      if (p5.Vector.dist(this.location, loc) < this.radius) {
-        this.listDown = true;
-        var time = millis();
-        this.cutArray();
-        this.prepareNext();
-        console.log("Time taken to process " + this.nextProperty + " : " + (millis() - time));
-      }
-    } else {
-      for (var i = 0; i < this.categories.length; i++) {
-        this.categories[i].incomingPressed(loc);
+    console.log(this.listLevel);
+    if (this.listLevel < this.totalLevels) {
+      if (!this.listDown) {
+        if (p5.Vector.dist(this.location, loc) < this.radius) {
+          this.listDown = true;
+          var time = millis();
+          this.cutArray();
+          this.prepareNext();
+          console.log("Time taken to process " + this.nextProperty + " : " + (millis() - time));
+        }
+      } else {
+        for (var i = 0; i < this.categories.length; i++) {
+          this.categories[i].incomingPressed(loc);
+        }
       }
     }
   }
@@ -135,10 +140,6 @@ function Bubble(arr, listLevel, bubbleName) {
     }
   }
 
-  this.move = function() {
-
-  }
-
   this.decide = function() {
     if (!this.listDown) {
       this.display();
@@ -150,7 +151,7 @@ function Bubble(arr, listLevel, bubbleName) {
   }
 
   this.sortArrayObjects = function() {
-    if (this.arrayContained.length > 20) {
+    if (this.arrayContained.length > 0) {
       this.arrayContained.sort(function(a, b) {
         var nameA = a[this.nextProperty].toLowerCase();
         var nameB = b[this.nextProperty].toLowerCase();
@@ -163,7 +164,7 @@ function Bubble(arr, listLevel, bubbleName) {
         }
       }.bind(this))
     } else {
-      for (var i = 0; i < this.arrayContained.length; i++) {      //insertionSort
+      for (var i = 0; i < this.arrayContained.length; i++) { //insertionSort
         var current = this.arrayContained[i][this.nextProperty].toLowerCase();
         var currentObject = this.arrayContained[i][this.nextProperty];
         for (var j = i; j > 0 && this.arrayContained[j - 1][this.nextProperty].toLowerCase() > current; j--) {
