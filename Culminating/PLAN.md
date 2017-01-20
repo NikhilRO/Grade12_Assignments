@@ -17,3 +17,4 @@ Edits: I decided on Big Data (Algae). Reasons:
   * Learn about scopes. [Look here](https://github.com/NikhilRO/Grade12_Assignments/blob/248d54c325459fa6dc71486d87e57a75be49954c/Culminating/Bubble.js#L1) and [here](https://github.com/NikhilRO/Grade12_Assignments/blob/248d54c325459fa6dc71486d87e57a75be49954c/Culminating/README.md)
   * More efficient/impressive packing algorithm for bubbles/circles
   * Add Google image API for images of objects at last level. 
+  * Add Undo/Redo option
