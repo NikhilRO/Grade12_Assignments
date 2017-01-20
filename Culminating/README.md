@@ -1,3 +1,9 @@
+### Documentation for usage
+   * This program works with a CSV file to output a visualization based on bubbles. Currently, the levels are coded into the program. In future versions, expect the user to input the rank. For instance, right now, the program goes from `1) Kingdom; (2) Phylum ; (3) Class; (4) Order; (5) Family`. 
+   * Each click on a bubble takes you to the next level, displaying the bubbles for that level. The idea was to create a hierarchial chain.
+   * It is colour coded to create a visually applealing image, while being informative.
+   * Each bubble displays its name and number of species it contains.
+
 ### Task: [Do this](https://www.mindomo.com/mindmap/ics4u-culminating-assignment-2016-2017-1fe7a3d114ec488ba5fd9a23c9d3725f) using [this data](http://bit.ly/seidel-bigdata)
 
    *  I used Algae.
