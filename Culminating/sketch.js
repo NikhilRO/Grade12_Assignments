@@ -11,6 +11,12 @@ function preload() {
   var tempArray = loadJSON("algae.json", intoArray);
 }
 
+/**
+ * This function takes the array and uses Binary search on it
+ * @param  {array}  arr  This is the array to be searched
+ * @param  {number} i    This is what we are looking for
+ * @return {number}      The index which matches x or -1 if no match
+ */
 function intoArray(tempArray) {
   createCanvas(4000/2,3000/2)//windowWidth, windowHeight); //NEED A BETTER WAY TO NAVIGATE
   var number = countProps(tempArray);
@@ -37,7 +43,11 @@ function draw() {
   visualization.decide();
 }
 
-
+/**
+ * In javascript there are array-like objects. They don't have ".length" property. This function calculates the length for us. 
+ * @param  {object}  obj  The array-like object
+ * @return {number}       The length of the array-like object
+ */
 function countProps(obj) {
   var count = 0;
   for (var p in obj) {

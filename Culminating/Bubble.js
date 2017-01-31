@@ -1,3 +1,11 @@
+/**
+ * This class/object the bubble and each bubble has a certain level and its own arrayContained (for instance, species). This class is capable of recursion and can manage itself on multiple levels. 
+ * @class
+ * @constructor
+ * @param {array}   arr         The array of information the bubble contains
+ * @param {number}  listlevel   This is the level of the bubble(since we have a heirarchial structure, each bubble needs to know its level)
+ * @param {string}  bubbleName  This is the name of the bubble; for instance, it could be homo, then that bubble would contain sapiens (us: homo sapiens)
+ */
 function Bubble(arr, listLevel, bubbleName) {
   this.listDown = false
   this.listLevel = listLevel;
@@ -13,7 +21,13 @@ function Bubble(arr, listLevel, bubbleName) {
   this.location; //= createVector(random(width), random(height)); //width / 2, height / 2);
   this.radius; // = 75;
   this.originLoc;
-
+  
+/**
+ * This is function that serves purpose similar to setup
+ * @param  {object}  loc      This vector is the location of the bubble
+ * @param  {number}  radius   radius on the bubble
+ * @return {object}  endLine  This vector tells the bubble its origin since I want to connect it to that spot.
+ */
   this.initialization = function(loc, radius, endLine) {
     this.nextProperty = this.listToProperty(this.listLevel + 1);
     this.colour = this.listToColour(this.listLevel + 1);
@@ -32,6 +46,9 @@ function Bubble(arr, listLevel, bubbleName) {
     this.textFactor = 20 / (textWide / (1.75 * this.radius));
   }
 
+/**
+ * This function displays the bubble with its names and number in arrayContained OR it calls upon the next level depending on what level are we on
+ */
   this.display = function() {
     fill(this.colour);
     if (this.originLoc) {
@@ -56,6 +73,10 @@ function Bubble(arr, listLevel, bubbleName) {
     noStroke();
   }
 
+/**
+ * This function determines if the click is valid, creating next level if it is valid. If next level already exist, it sends the click to them 
+ * @param  {object}  loc  This vector tells the location of mouse when it is clicked
+ */
   this.incomingPressed = function(loc) {
     console.log(this.listLevel);
     if (this.listLevel < this.totalLevels) {
@@ -75,6 +96,9 @@ function Bubble(arr, listLevel, bubbleName) {
     }
   }
 
+/**
+ * This function cuts the arrayContained based on level (level determines property). This helps to create the next level
+ */
   this.cutArray = function() {
     var previousIndex = 0;
     for (var i = 1; i < this.arrayContained.length; i++) {
@@ -90,6 +114,11 @@ function Bubble(arr, listLevel, bubbleName) {
   }
 
 
+/**
+ * This function takes the listLevel and tells what property is that
+ * @param  {number}  level  This is the current level (or the next one; program decides what it needs)
+ * @return {number}         The name of the level we are at (this is different from bubbleName).
+ */
   this.listToProperty = function(level) {
     if (level === 1) {
       return "kingdom";
@@ -107,6 +136,11 @@ function Bubble(arr, listLevel, bubbleName) {
       return "Not valid/exhausted all the options";
     }
   }
+/**
+ * This function takes the listLevel and tells what colour is that. This helps in colour coding the bubbles.
+ * @param  {number}  level  This is the current level (or the next one; program decides what it needs)
+ * @return {object}         The colour object to determine the colour of the bubble
+ */
   this.listToColour = function(level) {
     if (level === 1) {
       return color(255, 255, 0); //yellow
@@ -125,7 +159,9 @@ function Bubble(arr, listLevel, bubbleName) {
     }
   }
 
-
+/**
+ * Once the next level is ready (cutting etc.), we need to initialize it and tell is some information to prepare it. This does that
+ */
   this.prepareNext = function() {
     var angleRotate = 360 / this.categories.length;
     var nextRadius = Math.pow(Math.pow(this.radius, 2) / this.categories.length, 1 / 2);
@@ -140,6 +176,10 @@ function Bubble(arr, listLevel, bubbleName) {
     }
   }
 
+/**
+   * Helper function that runs the show. Seems tiny but one of the most important functions. (deciding to call the next level depending on the state)(state: if bubble clicked or not)
+   * @see {@link display}
+   */
   this.decide = function() {
     if (!this.listDown) {
       this.display();
@@ -150,6 +190,9 @@ function Bubble(arr, listLevel, bubbleName) {
     }
   }
 
+/**
+ * This function sorts the array contained based on the criteria on the bubble (the name of the level)
+ */
   this.sortArrayObjects = function() {
     if (this.arrayContained.length > 0) {
       this.arrayContained.sort(function(a, b) {
