@@ -6,7 +6,7 @@
 
 After sorting the arrays, the program displays the information of both arrays in ascending order on the screen.
 
-####Resources:
+#### Resources:
   * [Bubble Sort (C++/Java)](http://cathyatseneca.github.io/DSAnim/web/bubble.html)
   * [Insertion Sort (C++/Java)](http://cathyatseneca.github.io/DSAnim/web/insertion.html)
   * [Sorting Presentation](https://prezi.com/_c5eer8nslnm/sorting/)
