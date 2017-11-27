@@ -2,7 +2,7 @@
 
 #### Create a program to use sound from group of grade 1 students. I created a game. *(homage to [doodlejump](http://doodlejump.org/)* 
 
-####Resources:
+#### Resources:
   * [p5.js - Sound Playlist (Daniel Shiffman)](https://www.youtube.com/watch?v=Pn1g1wjxl_0&list=PLRqwX-V7Uu6aFcVjlDAkkGIixw70s7jpW)
   * [p5.js - Loading and Playing Sound](https://www.youtube.com/watch?v=Pn1g1wjxl_0)
   * [p5.js - Play and Pause Button](https://www.youtube.com/watch?v=YcezEwOXun4)
